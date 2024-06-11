@@ -56,53 +56,47 @@ const userlist = [
     email: "felecia@howard.com",
     image_url: "/users/Felecia-Howard.jpg",
   },
-  //   {
-  //     id: "31cde540-75ee-405b-8916-1a7ad7721162",
-  //     name: "Clarence Wright",
-  //     email: "clarence@wright.com",
-  //     image_url: "/users/Bonnie-George.jpg",
-  //   },
 ];
 
 const subscribers = [
   {
-    user_id: users[0].id,
+    user_id: userlist[0].id,
     amount: 15,
     status: "active",
     date: "2024-05-01",
   },
   {
-    user_id: users[0].id,
+    user_id: userlist[0].id,
     amount: 15,
     status: "active",
     date: "2024-06-01",
   },
   {
-    user_id: users[1].id,
+    user_id: userlist[1].id,
     amount: 30,
     status: "active",
     date: "2024-05-01",
   },
   {
-    user_id: users[3].id,
+    user_id: userlist[3].id,
     amount: 15,
     status: "active",
     date: "2024-07-01",
   },
   {
-    user_id: users[2].id,
+    user_id: userlist[2].id,
     amount: 15,
     status: "active",
     date: "2024-10-01",
   },
   {
-    user_id: users[4].id,
+    user_id: userlist[4].id,
     amount: 15,
     status: "Suspend",
     date: "2024-11-01",
   },
   {
-    user_id: users[8].id,
+    user_id: userlist[0].id,
     amount: 15,
     status: "Suspend",
     date: "2024-12-01",
@@ -124,25 +118,9 @@ const revenue = [
   { month: "Dec", revenue: 4800 },
 ];
 
-const NumberOfUsers = [
-  { month: "Jan", users: 1000, subscribers: 100 },
-  { month: "Feb", users: 1000, subscribers: 100 },
-  { month: "Mar", users: 2200, subscribers: 100 },
-  { month: "Apr", users: 2500, subscribers: 100 },
-  { month: "May", users: 2300, subscribers: 100 },
-  { month: "Jun", users: 3200, subscribers: 100 },
-  { month: "Jul", users: 3500, subscribers: 100 },
-  { month: "Aug", users: 3700, subscribers: 100 },
-  { month: "Sep", users: 2500, subscribers: 100 },
-  { month: "Oct", users: 280, subscribers: 100 },
-  { month: "Nov", users: 3000, subscribers: 100 },
-  { month: "Dec", users: 4800, subscribers: 100 },
-];
-
-module.export = {
+module.exports = {
+  users,
   userlist,
   subscribers,
   revenue,
-  users,
-  NumberOfUsers,
 };
