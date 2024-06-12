@@ -7,7 +7,7 @@ const users = [
   },
 ];
 
-const userlist = [
+const players = [
   {
     id: "152c871b-d1cc-4e6d-b6b7-2cd9bd99a87c",
     name: "Jillian Scott",
@@ -60,45 +60,45 @@ const userlist = [
 
 const subscribers = [
   {
-    user_id: userlist[0].id,
+    user_id: players[0].id,
     amount: 15,
     status: "active",
     date: "2024-05-01",
   },
   {
-    user_id: userlist[0].id,
+    user_id: players[0].id,
     amount: 15,
     status: "active",
     date: "2024-06-01",
   },
   {
-    user_id: userlist[1].id,
+    user_id: players[1].id,
     amount: 30,
     status: "active",
     date: "2024-05-01",
   },
   {
-    user_id: userlist[3].id,
+    user_id: players[3].id,
     amount: 15,
     status: "active",
     date: "2024-07-01",
   },
   {
-    user_id: userlist[2].id,
+    user_id: players[2].id,
     amount: 15,
     status: "active",
     date: "2024-10-01",
   },
   {
-    user_id: userlist[4].id,
-    amount: 15,
-    status: "Suspend",
+    user_id: players[4].id,
+    amount: 0,
+    status: "cancelled",
     date: "2024-11-01",
   },
   {
-    user_id: userlist[0].id,
-    amount: 15,
-    status: "Suspend",
+    user_id: players[0].id,
+    amount: 0,
+    status: "cancelled",
     date: "2024-12-01",
   },
 ];
@@ -120,7 +120,7 @@ const revenue = [
 
 module.exports = {
   users,
-  userlist,
+  players,
   subscribers,
   revenue,
 };
