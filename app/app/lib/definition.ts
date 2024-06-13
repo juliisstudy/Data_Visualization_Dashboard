@@ -46,3 +46,14 @@ export type PlayerTable ={
     total_paid:number;
 }
 
+export type FormattedPlayersTable ={
+    id:string;
+    name:string;
+    email:string;
+    image_url:string;
+    total_subscribe:number;
+    total_active:number;
+    total_cancelled:number;
+    total_paid:string;
+}
+
