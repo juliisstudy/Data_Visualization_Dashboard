@@ -57,3 +57,20 @@ export type FormattedPlayersTable ={
     total_paid:string;
 }
 
+
+//edit form
+
+export type SubcribersForm = {
+    id:string;
+    user_id:string;
+    amount:number;
+    status:'active'|'cancelled'
+}
+
+export type PlayerField ={
+    id:string;
+    name:string;
+}
+
+
+

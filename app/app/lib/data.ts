@@ -1,6 +1,6 @@
 //fetch data from db
 import {sql} from '@vercel/postgres'
-import { PlayerTable } from './definition';
+import { PlayerField, PlayerTable,SubscriberTable } from './definition';
 import {formatCurrency} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import { error } from 'console';
@@ -61,4 +61,43 @@ export async function fetchSubscribersPages(query:string){
     throw new Error('Failed to fetch total number of subscribers')
   }
 
+}
+
+export async function fetchFilteredSubscribers(query:string,currentPage:number){
+  noStore()
+  const offset = (currentPage -1)*ITEMS_PER_PAGE;
+
+  try{
+    const subscribers = await sql<SubscriberTable>`
+   SELECT subscribers.id,subscribers.user_id,players.name,players.email,players.image_url,
+    subscribers.date,subscribers.amount,subscribers.status 
+    FROM subscribers JOIN players ON subscribers.user_id=players.id
+    WHERE
+      players.name ILIKE ${`%${query}%`} OR
+      players.name ILIKE ${`%${query}%`} OR
+      subscribers.amount::text ILIKE ${`%${query}%`} OR
+      subscribers.status ILIKE ${`%${query}%`}
+    ORDER BY subscribers.date DESC
+    LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+    `
+    return subscribers.rows;
+
+  }catch(err){
+    console.error('Database Error',error)
+    throw new Error('Failed to fetch total number of subscribers')
+  }
+}
+
+
+export async function fetchPlayers() {
+  try{
+    const data = await sql<PlayerField>`
+      SELECT id,name FROM players ORDER BY name ASC
+    `;
+    const players = data.rows;
+    return players;
+  }catch(err){
+    console.error('Database Error:',err)
+    throw new Error('Failed to fetch all players')
+  }
 }

@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import { fetchSubscribersPages } from "@/app/lib/data";
 import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/pagination";
+import { Suspense } from "react";
+import SubscribersTable from "@/app/ui/subscribers/table";
+
 export const metadata: Metadata = {
   title: "Subscribers",
 };
@@ -26,6 +29,10 @@ export default async function Subscribers({
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search subscribers" />
       </div>
+
+      <Suspense key={query + currentPage}>
+        <SubscribersTable query={query} currentPage={currentPage} />
+      </Suspense>
 
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPage={totalPages} />
