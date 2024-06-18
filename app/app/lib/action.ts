@@ -61,5 +61,33 @@ export async function createSubscribe(prevState:State,formData:FormData){
     redirect('/dashboard/subscribers')
 }
 
+const updateSubscription = FormSchema.omit({date:true,id:true})
 
+export async function UpdateSubscription(id:string,prevState:State,formData:FormData){
+    const validatedFields =  updateSubscription.safeParse({
+        customerId:formData.get('playerId'),
+        amount:formData.get('amount'),
+        status:formData.get('status')
+    })
+    if(!validatedFields.success){
+        return {
+            errors:validatedFields.error.flatten().fieldErrors,
+            message:'Missing Fields, Failed to Update'
+        }
+    }
+    const {playerId,amount,status} = validatedFields.data;
+    const amountInCents = amount*100
+    
+    try{
+        await sql`
+        UPDATE subscribers SET user_id=${playerId},amount=${amountInCents},status=${status}
+        WHERE id = ${id}
+        `;
+
+    }catch(error){
+        return {message:'Database Error:Failed to update'}
+    }
+    revalidatePath('dashboard/subscribers');
+    redirect('/dashboard/subscribers');
+}
 

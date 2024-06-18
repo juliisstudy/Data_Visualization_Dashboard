@@ -4,6 +4,7 @@ import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/pagination";
 import { Suspense } from "react";
 import SubscribersTable from "@/app/ui/subscribers/table";
+import { CreateSubscribe } from "@/app/ui/subscribers/buttons";
 
 export const metadata: Metadata = {
   title: "Subscribers",
@@ -28,6 +29,7 @@ export default async function Subscribers({
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search subscribers" />
+        {/* <CreateSubscribe /> */}
       </div>
 
       <Suspense key={query + currentPage}>

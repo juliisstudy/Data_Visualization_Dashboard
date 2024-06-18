@@ -1,6 +1,6 @@
 //fetch data from db
 import {sql} from '@vercel/postgres'
-import { PlayerField, PlayerTable,SubscriberTable } from './definition';
+import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm } from './definition';
 import {formatCurrency} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import { error } from 'console';
@@ -100,4 +100,27 @@ export async function fetchPlayers() {
     console.error('Database Error:',err)
     throw new Error('Failed to fetch all players')
   }
+}
+
+export async function fetchSubscriptionsById(id:string) {
+  noStore();
+  try{
+    const data = await sql<SubscriptionsForm>`
+    SELECT subscribers.id,
+          subscribers.user_id,
+          subscribers.amount,
+          subscribers.status
+    FROM subscribers
+    WHERE subscribers.id = ${id}
+    `;
+    const subscriptions = data.rows.map((subscription)=>({
+      ...subscription,
+      amount:subscription.amount/100
+    }))
+    return subscriptions[0]
+  }catch(error)
+{
+  console.error('Database Error:',error)
+  throw new Error('Failed to fetch subscriptions')
+}  
 }
