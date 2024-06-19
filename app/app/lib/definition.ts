@@ -60,7 +60,7 @@ export type FormattedPlayersTable ={
 
 //edit form
 
-export type SubcribersForm = {
+export type SubscriptionsForm = {
     id:string;
     user_id:string;
     amount:number;

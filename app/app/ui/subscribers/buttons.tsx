@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
 
-export function createSubscribe() {
+export function CreateSubscribe() {
   return (
     <Link
       href={`/dashboard/subscribers/create`}

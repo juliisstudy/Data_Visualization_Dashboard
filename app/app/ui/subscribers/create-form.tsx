@@ -5,7 +5,11 @@ import { createSubscribe } from "@/app/lib/action";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
 
-export default function Form({ players }: { players: PlayerField[] }) {
+export default function CreateSubscribeForm({
+  players,
+}: {
+  players: PlayerField[];
+}) {
   const initialState = { message: "", error: {} };
   const [state, dispatch] = useFormState(createSubscribe, initialState);
   return (
