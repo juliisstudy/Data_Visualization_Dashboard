@@ -26,6 +26,7 @@ export default function EditSubcriptionForm({
     subscriptions.id
   );
   const [state, dispatch] = useFormState(updateSubcriptionWithId, initialState);
+
   return (
     <form action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">

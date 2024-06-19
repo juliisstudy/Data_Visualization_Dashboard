@@ -21,7 +21,7 @@ export type Subscriber ={
 }
 export type Revenue ={
     month:string;
-    revenue:string;
+    revenue:number;
 }
 
 export type SubscriberTable = {
@@ -71,6 +71,4 @@ export type PlayerField ={
     id:string;
     name:string;
 }
-
-
 

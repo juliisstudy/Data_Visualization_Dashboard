@@ -15,10 +15,10 @@ export default async function page({ params }: { params: { id: string } }) {
   ]);
 
   const breadcrumbs = [
-    { label: "Subscription", href: "/dashboard/subscriptions" },
+    { label: "Subscription", href: "/dashboard/subscribers" },
     {
       label: "Edit Subscription",
-      href: `/dashboard/subscriptions/${id}/edit`,
+      href: `/dashboard/subscribers/${id}/edit`,
       active: true,
     },
   ];
@@ -29,9 +29,8 @@ export default async function page({ params }: { params: { id: string } }) {
 
   return (
     <main>
-      sdfasf
-      {/* <Breadcrumbs breadcrumbs={breadcrumbs}></Breadcrumbs> */}
-      {/* <EditSubcriptionForm subscriptions={subscriptions} players={players} /> */}
+      <Breadcrumbs breadcrumbs={breadcrumbs}></Breadcrumbs>
+      <EditSubcriptionForm subscriptions={subscriptions} players={players} />
     </main>
   );
 }

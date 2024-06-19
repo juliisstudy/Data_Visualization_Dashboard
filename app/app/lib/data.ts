@@ -1,6 +1,6 @@
 //fetch data from db
 import {sql} from '@vercel/postgres'
-import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm } from './definition';
+import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm,Revenue } from './definition';
 import {formatCurrency} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import { error } from 'console';
@@ -123,4 +123,44 @@ export async function fetchSubscriptionsById(id:string) {
   console.error('Database Error:',error)
   throw new Error('Failed to fetch subscriptions')
 }  
+}
+
+export async function fetchRevenue(){
+  noStore();
+  try{
+    const data = await sql<Revenue>`SELECT * FROM revenue`;
+    return data.rows;
+  }catch(error){
+    console.error('Database Error:',error)
+    throw new Error('Failed to fetch revenue data')
+  }
+
+}
+
+export async function fetchCardData(){
+  noStore()
+  try{
+    const subscriptionsCountPromise = sql`SELECT COUNT(*) FROM subscribers`;
+    const playersCountPromise = sql`SELECT COUNT(*) FROM players`;
+    const activeCountPromise = sql`SELECT COUNT(*) FROM subscribers WHERE status='active'`;
+    const totalRevenuesPromis = sql`SELECT SUM(CASE WHEN status='active'THEN amount ELSE 0 END) AS "active" 
+    FROM subscribers`;
+    
+    const data = await Promise.all([subscriptionsCountPromise,playersCountPromise,activeCountPromise,totalRevenuesPromis]);
+
+      const numberOfSubscriptions = Number(data[0].rows[0].count ?? '0');
+      const numberOfPlayers = Number(data[1].rows[0].count??'0');
+      const numberOfActiveSubscriptions = Number(data[2].rows[0].count??'0');
+      const totalRevenues = formatCurrency(data[3].rows[0].active ?? '0');
+
+    return {
+      numberOfSubscriptions,
+      numberOfPlayers,
+      numberOfActiveSubscriptions,
+      totalRevenues
+    }
+      }catch(error){
+        console.error('Database Error:',error)
+        throw new Error('Failed to fetch card data');
+      }
 }

@@ -63,12 +63,18 @@ export async function createSubscribe(prevState:State,formData:FormData){
 
 const updateSubscription = FormSchema.omit({date:true,id:true})
 
+
+
+
 export async function UpdateSubscription(id:string,prevState:State,formData:FormData){
     const validatedFields =  updateSubscription.safeParse({
-        customerId:formData.get('playerId'),
+        playerId:formData.get('playerId'),
         amount:formData.get('amount'),
         status:formData.get('status')
     })
+
+    
+
     if(!validatedFields.success){
         return {
             errors:validatedFields.error.flatten().fieldErrors,
@@ -91,3 +97,12 @@ export async function UpdateSubscription(id:string,prevState:State,formData:Form
     redirect('/dashboard/subscribers');
 }
 
+export async function deleteSubscription(id:string){
+    try{
+        await sql `DELETE FROM subscribers WHERE id=${id}`;
+        revalidatePath('/dashboard/subscribers')
+        return {message:'Delete subscription'}
+    }catch(error){
+        return {message:'Database Error:Failed to Delete subscription'}
+    }
+}

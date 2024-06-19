@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { deleteSubscription } from "@/app/lib/action";
 
 export function CreateSubscribe() {
   return (
@@ -21,5 +22,16 @@ export function UpdateSubscribeButton({ id }: { id: string }) {
     >
       <PencilIcon className="w-5" />
     </Link>
+  );
+}
+
+export function DeleteSubscriptionButton({ id }: { id: string }) {
+  const deleteSubscriptionId = deleteSubscription.bind(null, id);
+  return (
+    <form action={deleteSubscriptionId}>
+      <button className="rounded-md border p-2 hover:bg-gray-100">
+        <span className="sr-only">Delete</span>
+      </button>
+    </form>
   );
 }
