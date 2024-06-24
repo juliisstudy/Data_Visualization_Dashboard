@@ -27,7 +27,7 @@ export default function NavLink() {
 
     return (
       <Link
-        key={link.name}
+        key={link.href}
         href={link.href}
         className={clsx(
           "flex h-[48px] grow items-center font-medium hover:text-blue-50 hover:text-foreground",
@@ -46,10 +46,11 @@ export default function NavLink() {
     const LinkIcon = link.icon;
     return (
       <>
-        <TooltipProvider key={link.name}>
+        <TooltipProvider key={link.href}>
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
+                key={link.href}
                 href={link.href}
                 className="flex items-center justify-start"
               >

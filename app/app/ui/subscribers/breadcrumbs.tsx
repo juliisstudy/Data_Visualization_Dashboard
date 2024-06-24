@@ -1,5 +1,19 @@
 import { clsx } from "clsx";
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 type Breadcrumb = {
   label: string;
@@ -13,23 +27,17 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 block">
-      <ol className={clsx("flex text-xl md:text-2xl")}>
+    <Breadcrumb>
+      <BreadcrumbList>
         {breadcrumbs.map((breadcrumb, index) => (
-          <li
-            key={breadcrumb.href}
-            aria-current={breadcrumb.active}
-            className={clsx(
-              breadcrumb.active ? "text-gray-50" : "text-gray-100"
-            )}
-          >
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
-            {index < breadcrumbs.length - 1 ? (
-              <span className="mx-3 inline-block">/</span>
-            ) : null}
-          </li>
+          <BreadcrumbItem key={breadcrumb.href}>
+            <BreadcrumbLink href={breadcrumb.href}>
+              {breadcrumb.label}
+            </BreadcrumbLink>
+            {index < breadcrumbs.length - 1 ? <BreadcrumbSeparator /> : null}
+          </BreadcrumbItem>
         ))}
-      </ol>
-    </nav>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }

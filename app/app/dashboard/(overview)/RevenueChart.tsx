@@ -3,20 +3,17 @@ import { generateYAxis } from "@/app/lib/utils";
 
 export default async function RevenueCart() {
   const revenue = await fetchRevenue();
-  const chartHeight = 350;
+  const chartHeight = 300;
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
-
-  const a = 9;
-  console.log(a.toString());
 
   if (!revenue || revenue.length === 0) {
     return <p className="mt-4 text-gray-50">No data available</p>;
   }
   return (
-    <div className="w-full md:col-span-4">
+    <div className="w-full md:col-span-3">
       <h2>Recent Revenue</h2>
-      <div className="rounded-xl bg-gray-50 p-4">
-        <div className="mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
+      <div className="rounded-sm bg-gray-50 p-4">
+        <div className="mt-0 grid grid-cols-12 items-end gap-2 rounded-sm bg-white p-4 sm:grid-cols-12 md:gap-4">
           {/* y-axis */}
           <div
             className="mb-6 hidden flex-col justify-between text-sm text-gray-400 sm:flex"

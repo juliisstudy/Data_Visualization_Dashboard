@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { fetchFilteredPlayers } from "@/app/lib/data";
 import PlayersTable from "@/app/ui/players/PlayersTable";
-
 export const metadata: Metadata = {
   title: "Player",
 };

@@ -1,6 +1,7 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { Input } from "@/components/ui/input";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
@@ -24,8 +25,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
       <label htmlFor="search" className="sr-only">
         Search
       </label>
-      <input
-        className="peer block w-full rounded-md border placeholder:text-gray-500"
+      <Input
+        className=""
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value);

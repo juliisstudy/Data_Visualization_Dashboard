@@ -1,4 +1,13 @@
 import { fetchCardData } from "@/app/lib/data";
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+
 export default async function CardWrapper() {
   const {
     numberOfPlayers,
@@ -7,38 +16,64 @@ export default async function CardWrapper() {
     totalRevenues,
   } = await fetchCardData();
   return (
-    <div>
-      <Card title="Total Players" value={numberOfPlayers} type="players" />
-      <Card
-        title="Total Subscriptions"
-        value={numberOfSubscriptions}
-        type="subscribers"
-      />
-      <Card
-        title="Total Active Subscriptions"
-        value={numberOfActiveSubscriptions}
-        type="active"
-      />
-      <Card title="Total revenues" value={totalRevenues} type="revenues" />
-    </div>
-  );
-}
+    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+      <Card className="" x-chunk="dashboard-05-chunk-0">
+        <CardHeader className="pb-3">
+          <CardDescription>Number of players</CardDescription>
+          <CardTitle className="text-4xl">{numberOfPlayers}</CardTitle>
+          {/* <CardDescription className="max-w-lg text-balance leading-relaxed">
+            Introducing Our Dynamic Orders Dashboard for Seamless Management and
+            Insightful Analysis.
+          </CardDescription> */}
+        </CardHeader>
 
-export function Card({
-  title,
-  value,
-  type,
-}: {
-  title: string;
-  value: number | string;
-  type: "subscribers" | "players" | "active" | "revenues";
-}) {
-  return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex-p-4">
-        <h3>{title}</h3>
-      </div>
-      <p>{value}</p>
+        <CardFooter>{/* <Button>Create New Order</Button> */}</CardFooter>
+      </Card>
+      <Card x-chunk="dashboard-05-chunk-1">
+        <CardHeader className="pb-2">
+          <CardDescription>Number of Subscriptions</CardDescription>
+          <CardTitle className="text-4xl">{numberOfSubscriptions}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {/* <div className="text-xs text-muted-foreground">
+            +25% from last week
+          </div> */}
+        </CardContent>
+        <CardFooter>
+          {/* <Progress value={25} aria-label="25% increase" /> */}
+        </CardFooter>
+      </Card>
+      <Card x-chunk="dashboard-05-chunk-2">
+        <CardHeader className="pb-2">
+          <CardDescription>Active Subscriptions</CardDescription>
+          <CardTitle className="text-4xl">
+            {numberOfActiveSubscriptions}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {/* <div className="text-xs text-muted-foreground">
+            +10% from last month
+          </div> */}
+        </CardContent>
+        <CardFooter>
+          {/* <Progress value={12} aria-label="12% increase" /> */}
+        </CardFooter>
+      </Card>
+
+      <Card x-chunk="dashboard-05-chunk-3">
+        <CardHeader className="pb-2">
+          <CardDescription>Total Revenues</CardDescription>
+          <CardTitle className="text-4xl">{totalRevenues}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {/* <div className="text-xs text-muted-foreground">
+            +10% from last month
+          </div> */}
+        </CardContent>
+        <CardFooter>
+          {/* <Progress value={12} aria-label="12% increase" /> */}
+        </CardFooter>
+      </Card>
     </div>
   );
 }
