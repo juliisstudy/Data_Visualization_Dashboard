@@ -6,10 +6,16 @@ import { Suspense } from "react";
 import SubscribersTable from "@/app/ui/subscribers/table";
 import { CreateSubscribe } from "@/app/ui/subscribers/buttons";
 import { SubscribersTableSkeleton } from "@/app/ui/skeletons";
-
+import { Title } from "@/app/ui/title";
+import Breadcrumbs from "@/app/ui/subscribers/breadcrumbs";
 export const metadata: Metadata = {
-  title: "Subscribers",
+  title: "Subscriptions",
 };
+
+const breadcrumbs = [
+  { label: "Dashboard", href: "/dashboard" },
+  { label: "Subscriptions", href: "/dashboard/subscribers" },
+];
 
 export default async function Subscribers({
   searchParams,
@@ -24,25 +30,25 @@ export default async function Subscribers({
   const totalPages = await fetchSubscribersPages(query);
 
   return (
-    <div className="w-full">
-      <div>
-        <h1>Subscribers</h1>
-      </div>
-      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search subscribers" />
-        <CreateSubscribe />
-      </div>
+    <>
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
 
-      <Suspense
-        key={query + currentPage}
-        fallback={<SubscribersTableSkeleton />}
-      >
-        <SubscribersTable query={query} currentPage={currentPage} />
-      </Suspense>
-
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPage={totalPages} />
+      <Title title="Subscriptions" />
+      <div className="w-full sm:px-6 md:w-4/5">
+        <div className="mt-4 flex items-center justify-between gap-2 md:mt-2">
+          <Search placeholder="Search subscribers" />
+          <CreateSubscribe />
+        </div>
+        <Suspense
+          key={query + currentPage}
+          fallback={<SubscribersTableSkeleton />}
+        >
+          <SubscribersTable query={query} currentPage={currentPage} />
+        </Suspense>
+        <div className="mt-5 flex w-full justify-center">
+          <Pagination totalPage={totalPages} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

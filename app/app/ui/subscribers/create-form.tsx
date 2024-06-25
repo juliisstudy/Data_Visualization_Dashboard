@@ -3,7 +3,8 @@ import { PlayerField } from "@/app/lib/definition";
 import { useFormState } from "react-dom";
 import { createSubscribe } from "@/app/lib/action";
 import Link from "next/link";
-import { Button } from "@/app/ui/button";
+import { ButtonUI } from "@/app/ui/button";
+import { Title } from "@/app/ui/title";
 
 export default function CreateSubscribeForm({
   players,
@@ -14,19 +15,21 @@ export default function CreateSubscribeForm({
   const [state, dispatch] = useFormState(createSubscribe, initialState);
   return (
     <form action={dispatch}>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
-        <label htmlFor="player" className="mb-2 block text-sm font-medium">
+      <Title title="Create a Subscription " />
+
+      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 md:p-6 w-1/2 mt-3 ">
+        <label htmlFor="player" className="mb-2 block text-lg font-medium">
           Choose a player
         </label>
         <div className="relative">
           <select
             id="player"
             name="playerId"
-            className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-50"
+            className="peer block w-full p-4 cursor-pointer rounded-sm mt-7"
             defaultValue=""
             aria-describedby="player-error"
           >
-            <option value="" disabled>
+            <option value="" disabled className="bg-white-50">
               Select a player
             </option>
             {players.map((player) => (
@@ -47,10 +50,13 @@ export default function CreateSubscribeForm({
         </div>
 
         <div className="mb-4">
-          <label htmlFor="amount" className="mb-2 block text-sm font-medium">
+          <label
+            htmlFor="amount"
+            className="mb-2 block text-lg font-medium mt-8"
+          >
             Choose an amount
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-5 rounded-md">
             <div className="relative">
               <input
                 id="amount"
@@ -58,7 +64,7 @@ export default function CreateSubscribeForm({
                 type="number"
                 step="0.01"
                 placeholder="Enter USD amount"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-sm p-3 border"
                 aria-describedby="amount-error"
               />
             </div>
@@ -74,10 +80,10 @@ export default function CreateSubscribeForm({
           </div>
 
           <fieldset>
-            <legend className="mb-2 block text-sm font-medium">
+            <legend className="mb-2 block text-lg font-medium mt-7">
               Set the subscribe status
             </legend>
-            <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
+            <div className="rounded-md border border-gray-50 mt-5">
               <div className="flex gap-4">
                 <div className="flex items-center">
                   <input
@@ -135,9 +141,11 @@ export default function CreateSubscribeForm({
             href="/dashboard/invoice"
             className="flex h-10 items-center rounded-lg bg-gray-100"
           >
-            Cancel
+            <ButtonUI className="bg-white border border-slate-200 text-slate-600-">
+              Cancel
+            </ButtonUI>
           </Link>
-          <Button type="submit">Create Subscribe</Button>
+          <ButtonUI type="submit">Create</ButtonUI>
         </div>
       </div>
     </form>

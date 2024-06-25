@@ -8,12 +8,12 @@ export default async function PlayersTable({
   players: FormattedPlayersTable[];
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full sm:px-6 md:w-4/5 dark:bg-slate-800 text-slate-300">
       <Search placeholder="Search players..." />
-      <div className="mt-6 flow-root">
+      <div className="mt-6 flow-root dark:bg-slate-800 text-slate-300">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
-            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0">
+            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0 dark:bg-black">
               <div className="md:hidden">
                 {players?.map((player) => (
                   <div
@@ -26,7 +26,7 @@ export default async function PlayersTable({
                           <div className="flex items-center gap-3">
                             <Image
                               src={player.image_url}
-                              className="rounded-full"
+                              className="rounded-sm"
                               alt={`${player.name}'s profile picture`}
                               width={28}
                               height={28}
@@ -53,7 +53,7 @@ export default async function PlayersTable({
                   </div>
                 ))}
               </div>
-              <table className="hidden min-w-full rounded-md text-gray-900 md:table">
+              <table className="hidden min-w-full rounded-md text-gray-900 md:table dark:bg-black">
                 <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
@@ -74,14 +74,14 @@ export default async function PlayersTable({
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-gray-200 text-gray-900">
+                <tbody className="divide-y divide-gray-200 text-gray-900 dark:bg-black">
                   {players.map((player) => (
                     <tr key={player.id} className="group">
                       <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-black group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6">
                         <div className="flex items-center gap-3">
                           <Image
                             src={player.image_url}
-                            className="rounded-full"
+                            className="rounded-sm"
                             alt={`${player.name}'s profile picture`}
                             width={28}
                             height={28}
@@ -89,7 +89,7 @@ export default async function PlayersTable({
                           <p>{player.name}</p>
                         </div>
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm dark:bg-slate-800 text-slate-300">
                         {player.email}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">

@@ -3,7 +3,6 @@ import Image from "next/image";
 import SubscriberStatus from "./subscriberStatus";
 import { UpdateSubscribeButton, DeleteSubscriptionButton } from "./buttons";
 import { formatCurrency } from "@/app/lib/utils";
-
 export default async function SubscribersTable({
   query,
   currentPage,
@@ -27,7 +26,7 @@ export default async function SubscribersTable({
                     <div className="mb-2 flex items-center">
                       <Image
                         src={subscriber.image_url}
-                        className="mr-2 rounded-full"
+                        className="mr-2 rounded-sm"
                         width={28}
                         height={28}
                         alt={`${subscriber.name}'s profile picture`}
@@ -38,7 +37,7 @@ export default async function SubscribersTable({
                   </div>
                   <SubscriberStatus status={subscriber.status} />
                 </div>
-                <div className="flex justify-end gap-2">
+                <div className="flex justify-center items-center gap-2">
                   <UpdateSubscribeButton id={subscriber.id} />
                   <DeleteSubscriptionButton id={subscriber.id} />
                 </div>
@@ -79,7 +78,7 @@ export default async function SubscribersTable({
                       <div className="flex items-center gap-3">
                         <Image
                           src={subscriber.image_url}
-                          className="rounded-full"
+                          className="rounded-sm"
                           width={28}
                           height={28}
                           alt={`${subscriber.name}'s profile picture`}
@@ -97,8 +96,8 @@ export default async function SubscribersTable({
                     <td className="whitespace-nowrap px-3 py-3">
                       <SubscriberStatus status={subscriber.status} />
                     </td>
-                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                      <div className="flex justify-end gap-3">
+                    <td className="whitespace-nowrap px-3 py-3 ">
+                      <div className="flex gap-3">
                         <UpdateSubscribeButton id={subscriber.id} />
                         <DeleteSubscriptionButton id={subscriber.id} />
                       </div>

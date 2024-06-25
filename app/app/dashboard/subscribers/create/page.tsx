@@ -19,7 +19,7 @@ export default async function Page() {
   const players = await fetchPlayers();
   return (
     <main>
-      {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Form players={players} />
     </main>
   );

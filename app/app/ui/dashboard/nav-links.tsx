@@ -6,12 +6,15 @@ import clsx from "clsx";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { PanelLeft, Home, Users2 } from "lucide-react";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip";
+import Image from "next/image";
+import ImageSorce from "@/public/logo/Logo.png";
 
 const links = [
   { name: "Home", href: "/dashboard", icon: Home },
@@ -30,7 +33,7 @@ export default function NavLink() {
         key={link.href}
         href={link.href}
         className={clsx(
-          "flex h-[48px] grow items-center font-medium hover:text-blue-50 hover:text-foreground",
+          "flex h-[50px] grow items-center font-medium hover:text-blue-50 hover:text-foreground",
           {
             "text-blue-600": pathname === link.href,
           }
@@ -71,22 +74,17 @@ export default function NavLink() {
 
   return (
     <>
-      <div className="flex  w-full flex-col bg-muted/40">
-        <aside className="fixed inset-y-0 left-0  z-10 hidden w-48 flex-col border-r bg-background sm:flex mr-10 ">
-          <nav className="flex flex-col items-start ml-2 mt-2 gap-5 px-2 sm:py-5">
-            <Link
-              href="#"
-              className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-            >
-              <div className="h-4 w-4 transition-all group-hover:scale-110" />{" "}
-              icon
-              <span className="sr-only">Game</span>
+      <div className="flex w-full flex-col bg-muted/40 sm:w-50">
+        <aside className="fixed inset-y-0 left-0 z-10 hidden flex-col border-r bg-background sm:flex ">
+          <nav className="flex flex-col items-start ml-2 gap-5 px-2 sm:py-5">
+            <Link href="#">
+              <Image src={ImageSorce} width={180} height={180} alt="Logo" />
             </Link>
             <>{linksGroupsDesktop}</>
           </nav>
         </aside>
-        <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-          <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+        <div className="flex flex-col sm:hidden">
+          <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button size="icon" variant="outline" className="sm:hidden">

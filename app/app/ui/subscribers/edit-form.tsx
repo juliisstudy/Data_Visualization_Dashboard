@@ -1,17 +1,12 @@
 "use client";
 
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
 import { error } from "console";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { UpdateSubscription } from "@/app/lib/action";
 import { SubscriptionsForm, PlayerField } from "@/app/lib/definition";
-import { Button } from "@/app/ui/button";
+import { ButtonUI } from "@/app/ui/button";
+import { Title } from "@/app/ui/title";
 
 export default function EditSubcriptionForm({
   subscriptions,
@@ -29,20 +24,22 @@ export default function EditSubcriptionForm({
 
   return (
     <form action={dispatch}>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
+      <Title title="Edit Subscriptions" />
+
+      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 md:p-6 w-1/2 mt-3 ">
         <div className="mb-4">
-          <label htmlFor="player" className="mb-2 block text-sm font-medium">
-            Choose Player
+          <label htmlFor="player" className="mb-2 block text-lg font-medium">
+            Choose a Player
           </label>
           <div className="relative">
             <select
               id="player"
               name="playerId"
-              className="peer block w-full cursor-pointer rounded-md"
+              className="peer block w-full p-4 cursor-pointer rounded-sm mt-7 "
               defaultValue={subscriptions.user_id}
               aria-describedby="customer-error"
             >
-              <option value="" disabled>
+              <option value="" disabled className="bg-white-50">
                 Select a player
               </option>
               {players.map((player) => (
@@ -63,11 +60,14 @@ export default function EditSubcriptionForm({
           </div>
 
           <div className="mb-4">
-            <label htmlFor="amount" className="mb-2 block text-sm font-medium">
-              choose an amount
+            <label
+              htmlFor="amount"
+              className="mb-2 block text-lg font-medium mt-8"
+            >
+              Enter an amount
             </label>
-            <div className="relative mt-2 rounded-md">
-              <div className="relative">
+            <div className="relative mt-5 rounded-sm ">
+              <div className="relative ">
                 <input
                   id="amount"
                   name="amount"
@@ -75,7 +75,7 @@ export default function EditSubcriptionForm({
                   defaultValue={subscriptions.amount}
                   step="0.01"
                   placeholder="Enter amount"
-                  className="peer block w-full rounded-md border"
+                  className="peer block w-full rounded-sm p-3 border"
                   aria-describedby="amount-error"
                 />
               </div>
@@ -89,10 +89,10 @@ export default function EditSubcriptionForm({
             </div>
 
             <fieldset>
-              <legend className="mb-2 block text-sm font-medium">
+              <legend className="mb-2 block text-lg font-medium mt-7">
                 Set the status
               </legend>
-              <div className="rounded-md border border-gray-50">
+              <div className="rounded-md border border-gray-50 mt-5">
                 <div className="flex gap-4">
                   <div className="flex items-center">
                     <input
@@ -107,7 +107,7 @@ export default function EditSubcriptionForm({
                       htmlFor="active"
                       className="ml-2 flex cursor-pointer items-center"
                     >
-                      Active
+                      Subscribed
                     </label>
                   </div>
                   <div className="flex items-center">
@@ -123,7 +123,7 @@ export default function EditSubcriptionForm({
                       htmlFor="cancelled"
                       className="ml-2 flex cursor-pointer items-center"
                     >
-                      cancelled
+                      Cancelled
                     </label>
                   </div>
                 </div>
@@ -147,11 +147,13 @@ export default function EditSubcriptionForm({
           <div className="mt-6 flex justify-end gap-4">
             <Link
               href="/dashboard/subscribers/"
-              className="flex h-10 items-center rounded-lg"
+              className="flex h-10 items-center rounded-sm "
             >
-              Cancel
+              <ButtonUI className="bg-white border border-slate-200 text-slate-600-">
+                Cancel
+              </ButtonUI>
             </Link>
-            <Button type="submit">Edit</Button>
+            <ButtonUI type="submit">Edit</ButtonUI>
           </div>
         </div>
       </div>
