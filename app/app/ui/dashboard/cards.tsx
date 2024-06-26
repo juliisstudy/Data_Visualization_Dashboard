@@ -16,7 +16,7 @@ export default async function CardWrapper() {
     totalRevenues,
   } = await fetchCardData();
   return (
-    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <Card className="" x-chunk="dashboard-05-chunk-0">
         <CardHeader className="pb-3">
           <CardDescription>Number of players</CardDescription>
@@ -35,9 +35,9 @@ export default async function CardWrapper() {
           <CardTitle className="text-4xl">{numberOfSubscriptions}</CardTitle>
         </CardHeader>
         <CardContent>
-          {/* <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-muted-foreground">
             +25% from last week
-          </div> */}
+          </div>
         </CardContent>
         <CardFooter>
           {/* <Progress value={25} aria-label="25% increase" /> */}
@@ -51,9 +51,9 @@ export default async function CardWrapper() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {/* <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-muted-foreground">
             +10% from last month
-          </div> */}
+          </div>
         </CardContent>
         <CardFooter>
           {/* <Progress value={12} aria-label="12% increase" /> */}
@@ -66,9 +66,9 @@ export default async function CardWrapper() {
           <CardTitle className="text-4xl">{totalRevenues}</CardTitle>
         </CardHeader>
         <CardContent>
-          {/* <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-muted-foreground">
             +10% from last month
-          </div> */}
+          </div>
         </CardContent>
         <CardFooter>
           {/* <Progress value={12} aria-label="12% increase" /> */}

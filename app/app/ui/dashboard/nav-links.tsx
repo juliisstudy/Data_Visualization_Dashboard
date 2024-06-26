@@ -76,8 +76,8 @@ export default function NavLink() {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-muted/40 sm:w-50">
-        <aside className="fixed inset-y-0 left-0 z-10 hidden flex-col border-r bg-background sm:flex ">
+      <div className="flex w-full flex-col bg-muted/40  dark:bg-slate-900">
+        <aside className="fixed inset-y-0 left-0 hidden flex-col border-r bg-background sm:flex dark:bg-slate-900">
           <nav className="flex flex-col items-start ml-2 gap-5 px-2 sm:py-5">
             <Link href="#">
               <Image src={ImageSorce} width={180} height={180} alt="Logo" />
