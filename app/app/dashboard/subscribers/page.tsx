@@ -30,7 +30,7 @@ export default async function Subscribers({
   const totalPages = await fetchSubscribersPages(query);
 
   return (
-    <>
+    <div className="border border-red-400 mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
 
       <Title title="Subscriptions" />
@@ -49,6 +49,6 @@ export default async function Subscribers({
           <Pagination totalPage={totalPages} />
         </div>
       </div>
-    </>
+    </div>
   );
 }

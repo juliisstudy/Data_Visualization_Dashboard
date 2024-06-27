@@ -12,16 +12,16 @@ export default async function SubscribersTable({
 }) {
   const subscribers = await fetchFilteredSubscribers(query, currentPage);
   return (
-    <div className="mt-6 flow-root">
+    <div className="mt-6 flow-root border border-blue-400 border-b ">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
             {subscribers?.map((subscriber) => (
               <div
                 key={subscriber.id}
-                className="mb-2 w-full rounded-md bg-white p-4"
+                className="mb-2 w-full rounded-sm bg-white p-3"
               >
-                <div className="flex items-center justify-between border-b pd-4">
+                <div className="flex items-center justify-between">
                   <div>
                     <div className="mb-2 flex items-center">
                       <Image
@@ -31,15 +31,20 @@ export default async function SubscribersTable({
                         height={28}
                         alt={`${subscriber.name}'s profile picture`}
                       />
-                      <p>{subscriber.name}</p>
+                      <div>
+                        <p>{subscriber.name}</p>
+                        <p className="text-sm text-gray-500">
+                          {subscriber.email}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-sm text-gray-500">{subscriber.email}</p>
                   </div>
-                  <SubscriberStatus status={subscriber.status} />
-                </div>
-                <div className="flex justify-center items-center gap-2">
-                  <UpdateSubscribeButton id={subscriber.id} />
-                  <DeleteSubscriptionButton id={subscriber.id} />
+
+                  <div className="flex justify-center items-center gap-2 absolute right-6">
+                    <SubscriberStatus status={subscriber.status} />
+                    <UpdateSubscribeButton id={subscriber.id} />
+                    <DeleteSubscriptionButton id={subscriber.id} />
+                  </div>
                 </div>
               </div>
             ))}

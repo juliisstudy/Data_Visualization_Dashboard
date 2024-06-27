@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { PanelLeft, Home, Users2 } from "lucide-react";
-
+import { signOut } from "@/app/auth";
 import { ModeToggle } from "@/components/toggleTheme";
 
 import {
@@ -76,17 +76,19 @@ export default function NavLink() {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-muted/40  dark:bg-slate-900">
-        <aside className="fixed inset-y-0 left-0 hidden flex-col border-r bg-background sm:flex dark:bg-slate-900">
-          <nav className="flex flex-col items-start ml-2 gap-5 px-2 sm:py-5">
+      <div className="flex w-full flex-col bg-muted/40 border border-blue-400 dark:bg-slate-900">
+        <aside className="hidden fixed inset-y-0 left-0 flex-col border-r bg-background sm:flex dark:bg-slate-900">
+          <nav className="flex flex-col items-start ml-2 gap-5 px-2 md:py-5">
             <Link href="#">
               <Image src={ImageSorce} width={180} height={180} alt="Logo" />
             </Link>
             <>{linksGroupsDesktop}</>
           </nav>
         </aside>
-        <div className="flex flex-col sm:hidden">
-          <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:hidden">
+
+        {/* moble nav */}
+        <div className="fixed top-0 flex flex-row items-start justify-start border border-blue-400 md:hidden">
+          <header className="z-30 flex h-14 items-center gap-4 md:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button size="icon" variant="outline" className="sm:hidden">

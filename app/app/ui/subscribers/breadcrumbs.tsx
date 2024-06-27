@@ -27,7 +27,7 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <Breadcrumb className="sm:mt-2 px-6 py-4">
+    <Breadcrumb className="border border-blue-300 pl-0 sm:mt-2 sm:px-6 py-4">
       <BreadcrumbList>
         {breadcrumbs.map((breadcrumb, index) => (
           <BreadcrumbItem key={breadcrumb.href}>
