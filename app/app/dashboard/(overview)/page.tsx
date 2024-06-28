@@ -19,22 +19,22 @@ export default function page() {
   const breadcrumbs = [{ label: "Dashboard", href: "/dashboard" }];
 
   return (
-    <div className="border border-red-400 mt-12">
+    <div className="mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Title title="Dashboard" />
-      <main className="grid gap-4 border border-blue-400 md:grid-cols-1 p-4 px-6 ">
-        <div className="border border-blue-400">
+      <main className="grid gap-4  md:grid-cols-1 p-4 px-6 ">
+        <div className="">
           <Suspense>
             <CardWrapper />
           </Suspense>
         </div>
         {/* grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 */}
 
-        <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-1 border border-purple-700 lg:grid-cols-2">
-          <div className="border border-red-400 md:min-h-80 lg:min-h-96">
+        <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+          <div className="md:min-h-80 lg:min-h-96">
             <Chart />
           </div>
-          <div className="border border-red-400 md:min-h-80 lg:min-h-96 ">
+          <div className="md:min-h-80 lg:min-h-96 ">
             <UserGrowth />
           </div>
         </div>

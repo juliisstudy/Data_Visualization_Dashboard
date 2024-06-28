@@ -30,12 +30,12 @@ export default async function Subscribers({
   const totalPages = await fetchSubscribersPages(query);
 
   return (
-    <div className="border border-red-400 mt-12">
+    <div className=" mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
 
       <Title title="Subscriptions" />
-      <div className="w-full sm:px-6 md:w-4/5">
-        <div className="mt-4 flex items-center justify-between gap-2 md:mt-2">
+      <div className="w-full sm:px-6 md:w-4/5 dark:bg-slate-900">
+        <div className="mt-4 flex items-center justify-between gap-3 md:mt-2">
           <Search placeholder="Search subscribers" />
           <CreateSubscribe />
         </div>

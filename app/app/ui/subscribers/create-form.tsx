@@ -17,7 +17,7 @@ export default function CreateSubscribeForm({
     <form action={dispatch}>
       <Title title="Create a Subscription " />
 
-      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 md:p-6 w-1/2 mt-3 ">
+      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 ">
         <label htmlFor="player" className="mb-2 block text-lg font-medium">
           Choose a player
         </label>

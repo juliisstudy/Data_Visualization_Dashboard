@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <Input
-        className=""
+        className="p-4"
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value);

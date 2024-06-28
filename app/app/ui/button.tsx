@@ -6,7 +6,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function ButtonUI({ children, className, ...rest }: ButtonProps) {
   return (
-    <Button {...rest} className={clsx("flex h-10 items-center", className)}>
+    <Button
+      {...rest}
+      className={clsx(
+        "flex h-10 items-center dark:bg-sky-600 text-gray-50 ",
+        className
+      )}
+    >
       {children}
     </Button>
   );

@@ -24,13 +24,13 @@ export default async function Page({
   const players = await fetchFilteredPlayers(query);
 
   return (
-    <>
+    <div className=" mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Title title="Players" />
 
       <main className="md:mt-2">
         <PlayersTable players={players} />
       </main>
-    </>
+    </div>
   );
 }

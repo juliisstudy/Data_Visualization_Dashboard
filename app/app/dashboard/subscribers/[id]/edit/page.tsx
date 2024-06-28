@@ -28,7 +28,7 @@ export default async function page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <main>
+    <main className="mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs}></Breadcrumbs>
       <EditSubcriptionForm subscriptions={subscriptions} players={players} />
     </main>

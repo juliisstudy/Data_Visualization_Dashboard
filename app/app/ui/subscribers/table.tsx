@@ -12,14 +12,14 @@ export default async function SubscribersTable({
 }) {
   const subscribers = await fetchFilteredSubscribers(query, currentPage);
   return (
-    <div className="mt-6 flow-root border border-blue-400 border-b ">
-      <div className="inline-block min-w-full align-middle">
-        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+    <div className="mt-6 flow-root dark:bg-slate-900">
+      <div className="inline-block min-w-full align-middle ">
+        <div className="rounded-lg bg-gray-50 p-2 dark:bg-slate-900 md:pt-0">
           <div className="md:hidden">
             {subscribers?.map((subscriber) => (
               <div
                 key={subscriber.id}
-                className="mb-2 w-full rounded-sm bg-white p-3"
+                className="mb-2 w-full rounded-sm bg-white p-3 dark:bg-slate-900"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -49,10 +49,11 @@ export default async function SubscribersTable({
               </div>
             ))}
           </div>
+          {/* desktop */}
           <div>
-            <table className="hidden min-w-full text-gray-900 md:table">
-              <thead className="rounded-lg text-left text-sm font-normal">
-                <tr>
+            <table className="hidden min-w-full text-gray-900 md:table dark:bg-slate-900">
+              <thead className="rounded-sm text-left text-sm font-normal dark:bg-slate-900 dark:text-muted-foreground ">
+                <tr className="">
                   <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                     Player
                   </th>
@@ -73,11 +74,11 @@ export default async function SubscribersTable({
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white">
+              <tbody className="bg-white dark:bg-slate-900">
                 {subscribers.map((subscriber) => (
                   <tr
                     key={subscriber.id}
-                    className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                    className="dark:bg-slate-900 p-4 w-full border-b text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-xs dark:text-slate-50"
                   >
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                       <div className="flex items-center gap-3">

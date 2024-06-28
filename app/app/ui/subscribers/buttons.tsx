@@ -7,10 +7,10 @@ export function CreateSubscribe() {
   return (
     <Link
       href={`/dashboard/subscribers/create`}
-      className="flex h-10 items-center rounded-sm"
+      className="flex h-10 items-center rounded-sm "
     >
-      <ButtonUI>
-        <span className="hidden md:block">Create</span>
+      <ButtonUI className="hover:bg-sky-800">
+        <span className="hidden md:block font-bold">Create</span>
         <PlusIcon className="h-5 md:ml-4" />
       </ButtonUI>
     </Link>
@@ -21,9 +21,9 @@ export function UpdateSubscribeButton({ id }: { id: string }) {
   return (
     <Link
       href={`/dashboard/subscribers/${id}/edit`}
-      className="rounded-md border p-2 hover:bg-gray-100"
+      className="rounded-md border p-2 hover:bg-cyan-600 dark:hover:bg-sky-700"
     >
-      <PencilIcon className="w-4 h-4" />
+      <PencilIcon className="w-4 h-4 " />
     </Link>
   );
 }
@@ -32,7 +32,7 @@ export function DeleteSubscriptionButton({ id }: { id: string }) {
   const deleteSubscriptionId = deleteSubscription.bind(null, id);
   return (
     <form action={deleteSubscriptionId}>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
+      <button className="rounded-md border p-2 hover:bg-cyan-600 dark:hover:bg-sky-700">
         <span className="sr-only">Delete</span>
         <FaRegTrashCan className="w-4 h-4" />
       </button>

@@ -26,7 +26,7 @@ export default function EditSubcriptionForm({
     <form action={dispatch}>
       <Title title="Edit Subscriptions" />
 
-      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 md:p-6 w-1/2 mt-3 ">
+      <div className="rounded-xs bg-gray-50 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 ">
         <div className="mb-4">
           <label htmlFor="player" className="mb-2 block text-lg font-medium">
             Choose a Player

@@ -61,7 +61,9 @@ export default function NavLink() {
               >
                 <LinkIcon />
 
-                <p className="ml-8">{link.name}</p>
+                <p className="ml-8 font-medium hover:text-sky-800">
+                  {link.name}
+                </p>
                 <span className="sr-only"></span>
               </Link>
             </TooltipTrigger>
@@ -76,7 +78,7 @@ export default function NavLink() {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-muted/40 border border-blue-400 dark:bg-slate-900">
+      <div className="flex w-full flex-col bg-muted/40  dark:bg-slate-900">
         <aside className="hidden fixed inset-y-0 left-0 flex-col border-r bg-background sm:flex dark:bg-slate-900">
           <nav className="flex flex-col items-start ml-2 gap-5 px-2 md:py-5">
             <Link href="#">
@@ -87,7 +89,7 @@ export default function NavLink() {
         </aside>
 
         {/* moble nav */}
-        <div className="fixed top-0 flex flex-row items-start justify-start border border-blue-400 md:hidden">
+        <div className="fixed top-0 flex flex-row items-start justify-start md:hidden">
           <header className="z-30 flex h-14 items-center gap-4 md:hidden">
             <Sheet>
               <SheetTrigger asChild>

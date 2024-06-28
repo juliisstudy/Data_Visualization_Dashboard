@@ -8,17 +8,17 @@ export default async function PlayersTable({
   players: FormattedPlayersTable[];
 }) {
   return (
-    <div className="w-full sm:px-6 md:w-4/5 dark:bg-slate-800 text-slate-300">
+    <div className="w-full sm:px-6 md:w-4/5 text-slate-300 dark:bg-slate-900">
       <Search placeholder="Search players..." />
-      <div className="mt-6 flow-root dark:bg-slate-800 text-slate-300">
-        <div className="overflow-x-auto">
-          <div className="inline-block min-w-full align-middle">
-            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0 dark:bg-black">
+      <div className="mt-6 flow-root dark:bg-slate-900 text-slate-300">
+        <div className="overflow-x-auto dark:bg-slate-900">
+          <div className="inline-block min-w-full align-middle dark:bg-slate-900">
+            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0 dark:bg-slate-900 dark:text-gray-50">
               <div className="md:hidden">
                 {players?.map((player) => (
                   <div
                     key={player.id}
-                    className="mb-2 w-full rounded-md bg-white p-4"
+                    className="mb-2 w-full bg-white p-4 text-slate-700 dark:bg-slate-900 border-b border-slate-500 md:border-none rounded-md dark:text-slate-400"
                   >
                     <div className="flex items-center justify-between border-b pb-4">
                       <div>
@@ -28,13 +28,15 @@ export default async function PlayersTable({
                               src={player.image_url}
                               className="rounded-sm"
                               alt={`${player.name}'s profile picture`}
-                              width={28}
-                              height={28}
+                              width={30}
+                              height={30}
                             />
-                            <p>{player.name}</p>
+                            <div>
+                              <p className="">{player.name}</p>
+                              <p className="text-sm">{player.email}</p>
+                            </div>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-500">{player.email}</p>
                       </div>
                     </div>
                     <div className="flex w-full items-center justify-between border-b py-5">
@@ -53,8 +55,8 @@ export default async function PlayersTable({
                   </div>
                 ))}
               </div>
-              <table className="hidden min-w-full rounded-md text-gray-900 md:table dark:bg-black">
-                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
+              <table className="hidden min-w-full rounded-md text-slate-700 md:table dark:bg-slate-900 ">
+                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal dark: border-b dark:border-gray-300 dark:bg-slate-900 dark:text-gray-50">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                       Name
@@ -74,10 +76,10 @@ export default async function PlayersTable({
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-gray-200 text-gray-900 dark:bg-black">
+                <tbody className="divide-y divide-gray-200 text-gray-900 dark:bg-slate-900 p-4">
                   {players.map((player) => (
-                    <tr key={player.id} className="group">
-                      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-black group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6">
+                    <tr key={player.id} className="p-4 group dark:bg-slate-900">
+                      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-slate-700 group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6 dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         <div className="flex items-center gap-3">
                           <Image
                             src={player.image_url}
@@ -89,16 +91,16 @@ export default async function PlayersTable({
                           <p>{player.name}</p>
                         </div>
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm dark:bg-slate-800 text-slate-300">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         {player.email}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         {player.total_subscribe}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         {player.total_cancelled}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         {player.total_paid}
                       </td>
                     </tr>

@@ -18,7 +18,7 @@ const breadcrumbs = [
 export default async function Page() {
   const players = await fetchPlayers();
   return (
-    <main>
+    <main className="mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Form players={players} />
     </main>
