@@ -3,7 +3,6 @@ import {sql} from '@vercel/postgres'
 import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm,Revenue } from './definition';
 import {formatCurrency} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
-import { error } from 'console';
 
 
 export async function fetchFilteredPlayers(query:string){
@@ -83,7 +82,7 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
     return subscribers.rows;
 
   }catch(err){
-    console.error('Database Error',error)
+    console.error('Database Error',err)
     throw new Error('Failed to fetch total number of subscribers')
   }
 }
@@ -134,8 +133,10 @@ export async function fetchRevenue(){
     console.error('Database Error:',error)
     throw new Error('Failed to fetch revenue data')
   }
-
 }
+
+
+
 
 export async function fetchCardData(){
   noStore()
@@ -163,4 +164,19 @@ export async function fetchCardData(){
         console.error('Database Error:',error)
         throw new Error('Failed to fetch card data');
       }
+}
+
+
+export async function fetchNumberOfPlayer(){
+  noStore();
+  try{
+    const data = await sql `SELECT COUNT(*) FROM players`;
+    const numberOfPlayers = Number(data.rows[0].count ?? '0');
+
+    return numberOfPlayers;
+  }catch(error){
+    console.error('Database Error:',error)
+    throw new Error('Failed to fetch numberOfPlayers')
+  }
+
 }

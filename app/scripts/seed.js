@@ -4,6 +4,8 @@ const {
   players,
   revenue,
   users,
+  numberOfPlayer,
+  numberOfSubscribers,
 } = require("../app/lib/db-data.js");
 const bcrypt = require("bcrypt");
 
@@ -162,12 +164,84 @@ async function seedRevenue(client) {
   }
 }
 
+async function seedNumberOfUser(client) {
+  try {
+    //await client.sql`DROP TABLE userGrowth`;
+
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS userGrowth (
+        month VARCHAR(4) NOT NULL UNIQUE,
+        numberOfUser INT NOT NULL
+      );
+    `;
+
+    console.log(`Created "userGrowth" table`);
+
+    const insertedNumberOfPlayers = await Promise.all(
+      numberOfPlayer.map(
+        (numOfuser) => client.sql`
+        INSERT INTO userGrowth (month, numberOfUser)
+        VALUES (${numOfuser.month}, ${numOfuser.users})
+        ON CONFLICT (month) DO NOTHING
+      `
+      )
+    );
+
+    console.log(`Seeded ${insertedNumberOfPlayers.length} records`);
+
+    return {
+      createTable,
+      numberOfPlayer: insertedNumberOfPlayers,
+    };
+  } catch (error) {
+    console.error("Error seeding userGrowth:", error);
+    throw error;
+  }
+}
+
+async function seedNumberOfSubscribers(client) {
+  try {
+    // await client.sql`DROP TABLE SubscribersGrowth`;
+
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS SubscribersGrowth (
+        month VARCHAR(4) NOT NULL UNIQUE,
+        numberOfSubscribers INT NOT NULL
+      );
+    `;
+
+    console.log(`Created "SubscribersGrowth" table`);
+
+    const insertedNumberOfSubscribers = await Promise.all(
+      numberOfSubscribers.map(
+        (numOfSubscriber) => client.sql`
+        INSERT INTO userGrow (month, numberOfUser)
+        VALUES (${numOfSubscriber.month}, ${numOfSubscriber.users})
+        ON CONFLICT (month) DO NOTHING
+      `
+      )
+    );
+
+    console.log(`Seeded ${insertedNumberOfSubscribers.length} records`);
+
+    return {
+      createTable,
+      numberOfSubscribers: insertedNumberOfSubscribers,
+    };
+  } catch (error) {
+    console.error("Error seeding SubscribersGrowth:", error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
   await seedUsers(client);
   await seedPlayers(client);
   await SeedSubscribers(client);
   await seedRevenue(client);
+  await seedNumberOfUser(client);
+  await seedNumberOfSubscribers(client);
 
   await client.end();
 }

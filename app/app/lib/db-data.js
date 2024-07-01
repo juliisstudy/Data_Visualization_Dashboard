@@ -118,9 +118,31 @@ const revenue = [
   { month: "Dec", revenue: 4800 },
 ];
 
+const numberOfPlayer = [
+  { month: "Jan", users: 2000 },
+  { month: "Feb", users: 1800 },
+  { month: "Mar", users: 2200 },
+  { month: "Apr", users: 2500 },
+  { month: "May", users: 2300 },
+  { month: "Jun", users: 3200 },
+  { month: "Jul", users: 3500 },
+];
+
+const numberOfSubscribers = [
+  { month: "Jan", users: 200 },
+  { month: "Feb", users: 180 },
+  { month: "Mar", users: 220 },
+  { month: "Apr", users: 250 },
+  { month: "May", users: 200 },
+  { month: "Jun", users: 200 },
+  { month: "Jul", users: 350 },
+];
+
 module.exports = {
   users,
   players,
   subscribers,
   revenue,
+  numberOfPlayer,
+  numberOfSubscribers,
 };

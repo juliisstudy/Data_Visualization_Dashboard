@@ -12,8 +12,9 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Title } from "@/app/ui/title";
 import Breadcrumbs from "@/app/ui/subscribers/breadcrumbs";
-import { Chart } from "@/app/dashboard/(overview)/chart";
+//import { Chart } from "@/app/dashboard/(overview)/chart";
 import { UserGrowth } from "./multiaxis";
+import ChartWrap from "./chartWrap";
 
 export default function page() {
   const breadcrumbs = [{ label: "Dashboard", href: "/dashboard" }];
@@ -31,10 +32,11 @@ export default function page() {
         {/* grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 */}
 
         <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-          <div className="md:min-h-80 lg:min-h-96">
-            <Chart />
+          <div className="min-h-70 md:min-h-80 lg:min-h-96">
+            {/* <Chart /> */}
+            <ChartWrap />
           </div>
-          <div className="md:min-h-80 lg:min-h-96 ">
+          <div className="min-h-70 md:min-h-80 lg:min-h-96 ">
             <UserGrowth />
           </div>
         </div>

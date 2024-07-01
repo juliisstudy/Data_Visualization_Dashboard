@@ -1,6 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { faker } from "@faker-js/faker";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,8 +14,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 
 ChartJS.register(
   BarElement,
@@ -42,23 +42,23 @@ export const options = {
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.number.int({ min: 10, max: 100 })),
-      backgroundColor: "rgba(252, 87,38, 0.5)",
-    },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(6, 224,191, 0.5)",
-    },
-  ],
-};
-
-export function Chart() {
+export function ChartOBj({ nums }: { nums: number[] }) {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "New players",
+        data: nums,
+        backgroundColor: "rgba(252, 87,38, 0.5)",
+      },
+      {
+        label: "Subscribers",
+        data: labels.map(() => faker.number.int({ min: 0, max: 500 })),
+        backgroundColor: "rgba(6, 224,191, 0.5)",
+      },
+    ],
+  };
+  console.log(data);
   return (
     <>
       <Bar options={options} data={data} />

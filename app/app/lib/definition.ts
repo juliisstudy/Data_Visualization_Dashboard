@@ -24,6 +24,11 @@ export type Revenue ={
     revenue:number;
 }
 
+export type UserGrowth ={
+    month:string;
+    num_users:number;
+}
+
 export type SubscriberTable = {
     id:string;
     user_id:string;
