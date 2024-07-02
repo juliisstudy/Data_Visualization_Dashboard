@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import CardWrapper from "@/app/ui/dashboard/cards";
-import RevenueCart from "./RevenueChart";
+import RevenueCart from "../../ui/dashboard/RevenueChart";
 import Link from "next/link";
 import {
   Breadcrumb,
@@ -13,49 +13,34 @@ import {
 import { Title } from "@/app/ui/title";
 import Breadcrumbs from "@/app/ui/subscribers/breadcrumbs";
 //import { Chart } from "@/app/dashboard/(overview)/chart";
-import { UserGrowth } from "./multiaxis";
+import { UserGrowth } from "../../ui/dashboard/multiaxis";
 import ChartWrap from "./chartWrap";
+import {
+  CardWraperSkeleton,
+  ChartSkeleton,
+  ChartWraperSkeleton,
+} from "@/components/ui/skeleton";
 
-export default function page() {
+export default async function page() {
   const breadcrumbs = [{ label: "Dashboard", href: "/dashboard" }];
 
   return (
     <div className="mt-12">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Title title="Dashboard" />
+
       <main className="grid gap-4  md:grid-cols-1 p-4 px-6 ">
         <div className="">
-          <Suspense>
+          <Suspense fallback={<CardWraperSkeleton />}>
             <CardWrapper />
           </Suspense>
         </div>
-        {/* grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 */}
 
         <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-          <div className="min-h-70 md:min-h-80 lg:min-h-96">
-            {/* <Chart /> */}
+          <Suspense fallback={<ChartWraperSkeleton />}>
             <ChartWrap />
-          </div>
-          <div className="min-h-70 md:min-h-80 lg:min-h-96 ">
-            <UserGrowth />
-          </div>
+          </Suspense>
         </div>
-
-        {/* <div className="flex flex-col w-full border border-red-400 items-start sm:flex-row md:flex-row">
-          <div className="border border-red-400 min-h-64 grow flex-1 md:w-1/2 md:min-h-80 lg:min-h-96">
-            <Chart />
-          </div>
-          <div className="border border-red-400  min-h-64 grow flex-1 md:w-1/2 md:min-h-80 lg:min-h-96">
-            <UserGrowth />
-          </div>
-        </div> */}
-        {/* grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 */}
-        {/* <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:grid-cols-3"> */}
-        {/* <Chart /> */}
-        {/* <UserGrowth /> */}
-        {/* <Suspense>
-            <RevenueCart />
-          </Suspense> */}
       </main>
     </div>
   );

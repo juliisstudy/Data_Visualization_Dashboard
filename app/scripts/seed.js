@@ -201,7 +201,7 @@ async function seedNumberOfUser(client) {
 
 async function seedNumberOfSubscribers(client) {
   try {
-    // await client.sql`DROP TABLE SubscribersGrowth`;
+    await client.sql`DROP TABLE SubscribersGrowth`;
 
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS SubscribersGrowth (
@@ -215,7 +215,7 @@ async function seedNumberOfSubscribers(client) {
     const insertedNumberOfSubscribers = await Promise.all(
       numberOfSubscribers.map(
         (numOfSubscriber) => client.sql`
-        INSERT INTO userGrow (month, numberOfUser)
+        INSERT INTO SubscribersGrowth (month, numberOfSubscribers)
         VALUES (${numOfSubscriber.month}, ${numOfSubscriber.users})
         ON CONFLICT (month) DO NOTHING
       `

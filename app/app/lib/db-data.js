@@ -129,13 +129,13 @@ const numberOfPlayer = [
 ];
 
 const numberOfSubscribers = [
-  { month: "Jan", users: 200 },
-  { month: "Feb", users: 180 },
-  { month: "Mar", users: 220 },
-  { month: "Apr", users: 250 },
-  { month: "May", users: 200 },
-  { month: "Jun", users: 200 },
-  { month: "Jul", users: 350 },
+  { month: "Jan", users: 500 },
+  { month: "Feb", users: 400 },
+  { month: "Mar", users: 450 },
+  { month: "Apr", users: 500 },
+  { month: "May", users: 400 },
+  { month: "Jun", users: 700 },
+  { month: "Jul", users: 500 },
 ];
 
 module.exports = {

@@ -1,13 +1,15 @@
 //fetch data from db
 import {sql} from '@vercel/postgres'
-import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm,Revenue } from './definition';
+import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm,Revenue,NumberOfPlayers,NumberOfSubscribers} from './definition';
 import {formatCurrency} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 
 export async function fetchFilteredPlayers(query:string){
+
     noStore();
     try{
+
       const data = await sql<PlayerTable>`
         SELECT
 		  players.id,
@@ -26,10 +28,13 @@ export async function fetchFilteredPlayers(query:string){
 		GROUP BY players.id, players.name, players.email, players.image_url
 		ORDER BY players.name ASC   
       `;
+              await new Promise((resolve) => setTimeout(resolve, 3000));
+
       const players = data.rows.map((player)=>({
         ...player,
         total_paid:formatCurrency(player.total_paid)
       }))
+
       return players
     }catch(err){
         console.error('Database error',err);
@@ -40,8 +45,10 @@ export async function fetchFilteredPlayers(query:string){
 const ITEMS_PER_PAGE =6
 
 export async function fetchSubscribersPages(query:string){
+  
   noStore();
   try{
+
     const count = await sql `SELECT COUNT(*)
     FROM subscribers
     JOIN players ON subscribers.user_id = players.id
@@ -79,6 +86,8 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
     ORDER BY subscribers.date DESC
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `
+                  await new Promise((resolve) => setTimeout(resolve, 3000));
+
     return subscribers.rows;
 
   }catch(err){
@@ -90,6 +99,8 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
 
 export async function fetchPlayers() {
   try{
+              await new Promise((resolve) => setTimeout(resolve, 3000));
+
     const data = await sql<PlayerField>`
       SELECT id,name FROM players ORDER BY name ASC
     `;
@@ -104,6 +115,7 @@ export async function fetchPlayers() {
 export async function fetchSubscriptionsById(id:string) {
   noStore();
   try{
+
     const data = await sql<SubscriptionsForm>`
     SELECT subscribers.id,
           subscribers.user_id,
@@ -114,7 +126,7 @@ export async function fetchSubscriptionsById(id:string) {
     `;
     const subscriptions = data.rows.map((subscription)=>({
       ...subscription,
-      amount:subscription.amount/100
+      amount:subscription.amount
     }))
     return subscriptions[0]
   }catch(error)
@@ -141,18 +153,23 @@ export async function fetchRevenue(){
 export async function fetchCardData(){
   noStore()
   try{
-    const subscriptionsCountPromise = sql`SELECT COUNT(*) FROM subscribers`;
-    const playersCountPromise = sql`SELECT COUNT(*) FROM players`;
+    // const subscriptionsCountPromise = sql`SELECT COUNT(*) FROM subscribers`;
+    // const playersCountPromise = sql`SELECT COUNT(*) FROM players`;
+
+    const subscriptionsCountPromise = sql`SELECT SUM(numberofsubscribers) FROM SubscribersGrowth`;
+    const playersCountPromise = sql`SELECT SUM(numberofuser) FROM userGrowth`;
+
     const activeCountPromise = sql`SELECT COUNT(*) FROM subscribers WHERE status='active'`;
     const totalRevenuesPromis = sql`SELECT SUM(CASE WHEN status='active'THEN amount ELSE 0 END) AS "active" 
     FROM subscribers`;
-    
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
     const data = await Promise.all([subscriptionsCountPromise,playersCountPromise,activeCountPromise,totalRevenuesPromis]);
 
-      const numberOfSubscriptions = Number(data[0].rows[0].count ?? '0');
-      const numberOfPlayers = Number(data[1].rows[0].count??'0');
-      const numberOfActiveSubscriptions = Number(data[2].rows[0].count??'0');
-      const totalRevenues = formatCurrency(data[3].rows[0].active ?? '0');
+      const numberOfSubscriptions = Number(data[0].rows[0].sum?? '0');
+      const numberOfPlayers = Number(data[1].rows[0].sum??'0');
+      const numberOfActiveSubscriptions = Number(data[2].rows[0].count*100??'0');
+      const totalRevenues = formatCurrency(data[3].rows[0].active*1000 ?? '0');
 
     return {
       numberOfSubscriptions,
@@ -167,16 +184,30 @@ export async function fetchCardData(){
 }
 
 
-export async function fetchNumberOfPlayer(){
+export async function fetchNumberOfPlayers(){
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+
   noStore();
   try{
-    const data = await sql `SELECT COUNT(*) FROM players`;
-    const numberOfPlayers = Number(data.rows[0].count ?? '0');
-
-    return numberOfPlayers;
+    const data = await sql<NumberOfPlayers>`SELECT * FROM usergrowth`;
+     
+    return data.rows
+    
   }catch(error){
     console.error('Database Error:',error)
-    throw new Error('Failed to fetch numberOfPlayers')
+    throw new Error('Failed to fetch usergrowth data')
   }
+}
 
+export async function fetchNumberOfSubscribers(){
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  noStore();
+  try{
+    const data = await sql<NumberOfSubscribers>`SELECT * FROM SubscribersGrowth`;
+    return data.rows;
+  }catch(error){
+    console.error('Database Error:',error)
+    throw new Error('Failed to fetch SubscribersGrowth data')
+  }
 }

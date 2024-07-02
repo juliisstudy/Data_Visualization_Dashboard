@@ -15,6 +15,7 @@ export default async function CardWrapper() {
     numberOfActiveSubscriptions,
     totalRevenues,
   } = await fetchCardData();
+
   return (
     <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <Card className="" x-chunk="dashboard-05-chunk-0">

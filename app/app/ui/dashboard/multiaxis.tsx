@@ -37,7 +37,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Line Chart - Multi Axis",
+      text: "User Growth",
       position: "bottom" as const,
     },
   },
@@ -58,28 +58,34 @@ export const options = {
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
+export function UserGrowth({
+  nums,
   labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-      borderColor: "rgba(252, 87,38, 0.5)",
-      backgroundColor: "rgba(252, 87,38, 0.5)",
-      yAxisID: "y",
-    },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-      borderColor: "rgba(6, 224,191, 0.5)",
-      backgroundColor: "rgba(6, 224,191, 0.5)",
-      yAxisID: "y1",
-    },
-  ],
-};
+  numsSecond,
+}: {
+  nums: number[];
+  labels: string[];
+  numsSecond: number[];
+}) {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "New Players",
+        data: nums,
+        borderColor: "rgba(6, 224,191, 0.5)",
+        backgroundColor: "rgba(6, 224,191, 0.5)",
+        yAxisID: "y",
+      },
+      {
+        label: "Subscribers",
+        data: numsSecond,
+        borderColor: "rgba(252, 87,38, 0.5)",
+        backgroundColor: "rgba(252, 87,38, 0.5)",
+        yAxisID: "y1",
+      },
+    ],
+  };
 
-export function UserGrowth() {
   return <Line options={options} data={data} />;
 }

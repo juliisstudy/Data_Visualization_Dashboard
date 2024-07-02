@@ -77,3 +77,11 @@ export type PlayerField ={
     name:string;
 }
 
+export type NumberOfPlayers ={
+    month:string;
+    numberofuser:number;
+}
+export type NumberOfSubscribers ={
+    month:string;
+    numberofsubscribers:number;
+}
