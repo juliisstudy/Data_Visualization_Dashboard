@@ -1,13 +1,3 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
 import Breadcrumbs from "./breadcrumbs";
 
 const breadcrumbsMain = [

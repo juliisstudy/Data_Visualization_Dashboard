@@ -8,11 +8,11 @@ export default async function PlayersTable({
   players: FormattedPlayersTable[];
 }) {
   return (
-    <div className="w-full sm:px-6 md:w-4/5 text-slate-300 dark:bg-slate-900">
+    <div className="w-full sm:px-6 md:w-4/5 text-slate-300">
       <Search placeholder="Search players..." />
       <div className="mt-6 flow-root dark:bg-slate-900 text-slate-300">
         <div className="overflow-x-auto dark:bg-slate-900">
-          <div className="inline-block min-w-full align-middle dark:bg-slate-900">
+          <div className="inline-block min-w-full align-middle">
             <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0 dark:bg-slate-900 dark:text-gray-50">
               <div className="md:hidden">
                 {players?.map((player) => (
@@ -55,8 +55,8 @@ export default async function PlayersTable({
                   </div>
                 ))}
               </div>
-              <table className="hidden min-w-full rounded-md text-slate-700 md:table dark:bg-slate-900 ">
-                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal dark: border-b dark:border-gray-300 dark:bg-slate-900 dark:text-gray-50">
+              <table className="hidden min-w-full rounded-md text-slate-700 md:table ">
+                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal dark: border-b dark:border-gray-500 dark:bg-slate-900 dark:text-gray-50">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                       Name
@@ -76,10 +76,13 @@ export default async function PlayersTable({
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-gray-200 text-gray-900 dark:bg-slate-900 p-4">
+                <tbody className="divide-y divide-gray-200 text-gray-900 p-4">
                   {players.map((player) => (
-                    <tr key={player.id} className="p-4 group dark:bg-slate-900">
-                      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-slate-700 group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6 dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
+                    <tr
+                      key={player.id}
+                      className="dark:bg-slate-900 p-4 w-full border-b text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-xs dark:text-slate-50"
+                    >
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         <div className="flex items-center gap-3">
                           <Image
                             src={player.image_url}

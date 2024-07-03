@@ -36,7 +36,7 @@ export default async function page() {
           </Suspense>
         </div>
 
-        <div className="grid gap-4 w-full sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-4 w-full mt-4 sm:grid-cols-1 md:grid-cols-1 md:mt-8 lg:grid-cols-2">
           <Suspense fallback={<ChartWraperSkeleton />}>
             <ChartWrap />
           </Suspense>

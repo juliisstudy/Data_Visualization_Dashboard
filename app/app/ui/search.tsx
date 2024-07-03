@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <Input
-        className="p-4"
+        className="p-4 py-6"
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value);

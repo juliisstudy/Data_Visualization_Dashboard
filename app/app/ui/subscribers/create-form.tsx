@@ -17,7 +17,7 @@ export default function CreateSubscribeForm({
     <form action={dispatch}>
       <Title title="Create a Subscription " />
 
-      <div className="rounded-sm bg-gray-50 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 ">
+      <div className="rounded-sm bg-white bg-opacity-60 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 dark:bg-slate-900">
         <label htmlFor="player" className="mb-2 block text-lg font-medium">
           Choose a player
         </label>
@@ -83,7 +83,7 @@ export default function CreateSubscribeForm({
             <legend className="mb-2 block text-lg font-medium mt-7">
               Set the subscribe status
             </legend>
-            <div className="rounded-md border border-gray-50 mt-5">
+            <div className="rounded-md border border-gray-50 mt-5 dark:border-none">
               <div className="flex gap-4">
                 <div className="flex items-center">
                   <input
@@ -95,7 +95,7 @@ export default function CreateSubscribeForm({
                   />
                   <label
                     htmlFor="active"
-                    className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5"
+                    className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 hover:bg-gray-200 dark:bg-sky-600 dark:text-gray-200"
                   >
                     Active
                   </label>
@@ -111,7 +111,7 @@ export default function CreateSubscribeForm({
                   />
                   <label
                     htmlFor="cancelled"
-                    className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5"
+                    className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 hover:bg-gray-200 dark:bg-sky-600 dark:text-gray-200"
                   >
                     Cancelled
                   </label>
@@ -141,7 +141,7 @@ export default function CreateSubscribeForm({
             href="/dashboard/invoice"
             className="flex h-10 items-center rounded-lg bg-gray-100"
           >
-            <ButtonUI className="bg-white border border-slate-200 text-slate-600-">
+            <ButtonUI className="bg-white border border-slate-200 text-slate-600 hover:text-white dark:bg-gray-400 dark:border-none">
               Cancel
             </ButtonUI>
           </Link>

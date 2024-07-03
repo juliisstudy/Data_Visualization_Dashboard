@@ -1,6 +1,5 @@
 import { fetchNumberOfPlayers, fetchNumberOfSubscribers } from "@/app/lib/data";
 import { ChartOBj } from "../../ui/dashboard/chart";
-import { faker } from "@faker-js/faker";
 import { UserGrowth } from "../../ui/dashboard/multiaxis";
 
 export default async function ChartWrap() {

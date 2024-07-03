@@ -28,7 +28,6 @@ export async function fetchFilteredPlayers(query:string){
 		GROUP BY players.id, players.name, players.email, players.image_url
 		ORDER BY players.name ASC   
       `;
-              await new Promise((resolve) => setTimeout(resolve, 3000));
 
       const players = data.rows.map((player)=>({
         ...player,
@@ -86,7 +85,6 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
     ORDER BY subscribers.date DESC
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `
-                  await new Promise((resolve) => setTimeout(resolve, 3000));
 
     return subscribers.rows;
 
@@ -99,7 +97,6 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
 
 export async function fetchPlayers() {
   try{
-              await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<PlayerField>`
       SELECT id,name FROM players ORDER BY name ASC
@@ -162,7 +159,6 @@ export async function fetchCardData(){
     const activeCountPromise = sql`SELECT COUNT(*) FROM subscribers WHERE status='active'`;
     const totalRevenuesPromis = sql`SELECT SUM(CASE WHEN status='active'THEN amount ELSE 0 END) AS "active" 
     FROM subscribers`;
-      await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await Promise.all([subscriptionsCountPromise,playersCountPromise,activeCountPromise,totalRevenuesPromis]);
 
@@ -185,7 +181,7 @@ export async function fetchCardData(){
 
 
 export async function fetchNumberOfPlayers(){
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+      //  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   noStore();
   try{
@@ -200,7 +196,6 @@ export async function fetchNumberOfPlayers(){
 }
 
 export async function fetchNumberOfSubscribers(){
-        await new Promise((resolve) => setTimeout(resolve, 3000));
 
   noStore();
   try{

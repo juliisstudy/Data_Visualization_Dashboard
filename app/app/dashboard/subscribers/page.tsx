@@ -34,7 +34,7 @@ export default async function Subscribers({
       <Breadcrumbs breadcrumbs={breadcrumbs} />
 
       <Title title="Subscriptions" />
-      <div className="w-full sm:px-6 md:w-4/5 dark:bg-slate-900">
+      <div className="w-full sm:px-6 md:w-4/5">
         <div className="mt-4 flex items-center justify-between gap-3 md:mt-2">
           <Search placeholder="Search subscribers" />
           <CreateSubscribe />

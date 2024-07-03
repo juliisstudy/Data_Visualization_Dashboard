@@ -1,23 +1,23 @@
 "use client";
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/app/lib/action";
-
+import { Button } from "@/components/ui/button";
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   return (
-    <form action={dispatch} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4">
-        <div className="w-full">
+    <form action={dispatch} className="">
+      <div className="drop-shadow-md relative top-10 bg-white bg-opacity-70 rounded-md grid place-items-center mx-4 md:w-1/3 md:mx-auto md:relative">
+        <div className="w-full p-4">
           <div>
             <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-50"
+              className="mt-2 mb-4 block text-sm font-medium text-gray-500"
               htmlFor="email"
             >
               Email
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border border-gray-200"
+                className="peer block w-full rounded-md border pl-2 py-4 border-gray-200"
                 id="email"
                 type="email"
                 name="email"
@@ -31,7 +31,7 @@ export default function LoginForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-full"
+                  className="peer block w-full pl-2 py-4 border border-gray-200"
                   id="password"
                   type="password"
                   name="password"
@@ -62,5 +62,9 @@ export default function LoginForm() {
 
 function LoginButton() {
   const { pending } = useFormStatus();
-  return <button aria-disabled={pending}>Login</button>;
+  return (
+    <Button className="w-1/4" aria-disabled={pending}>
+      Login
+    </Button>
+  );
 }

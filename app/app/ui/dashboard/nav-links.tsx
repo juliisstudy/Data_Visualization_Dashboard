@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { PanelLeft, Home, Users2 } from "lucide-react";
 import { signOut } from "@/app/auth";
 import { ModeToggle } from "@/components/toggleTheme";
-
+import { PiUsersFill } from "react-icons/pi";
+import { PiUsers } from "react-icons/pi";
 import {
   Tooltip,
   TooltipContent,
@@ -17,11 +18,12 @@ import {
 } from "@/components/ui/tooltip";
 import Image from "next/image";
 import ImageSorce from "@/public/logo/Logo.png";
+import ImageSorceDark from "@/public/logo/LogoDark.png";
 
 const links = [
   { name: "Home", href: "/dashboard", icon: Home },
-  { name: "Subscribers", href: "/dashboard/subscribers", icon: Users2 },
-  { name: "Players", href: "/dashboard/players", icon: Users2 },
+  { name: "Subscribers", href: "/dashboard/subscribers", icon: PiUsersFill },
+  { name: "Players", href: "/dashboard/players", icon: PiUsers },
 ];
 
 export default function NavLink() {
@@ -35,14 +37,17 @@ export default function NavLink() {
         key={link.href}
         href={link.href}
         className={clsx(
-          "flex h-[50px] grow items-center font-medium hover:text-blue-50 hover:text-foreground",
+          "flex h-[50px] grow items-center font-medium hover:text-blue-500 ",
           {
             "text-blue-600": pathname === link.href,
           }
         )}
       >
-        <LinkIcon />
-        <p>{link.name}</p>
+        <LinkIcon className=" w-6 h-6" />
+
+        <p key={link.href} className="ml-4 hover:text-blue-500">
+          {link.name}
+        </p>
       </Link>
     );
   });
@@ -52,24 +57,23 @@ export default function NavLink() {
     return (
       <>
         <TooltipProvider key={link.href}>
-          <Tooltip>
+          <Tooltip key={link.href}>
             <TooltipTrigger asChild>
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center justify-start"
+                className="flex items-center justify-start py-2"
               >
-                <LinkIcon />
-
-                <p className="ml-8 font-medium hover:text-sky-800">
+                <LinkIcon key={link.href} className="w-6 h-6" />
+                <p
+                  key={link.href}
+                  className="ml-6 font-medium hover:text-sky-800"
+                >
                   {link.name}
                 </p>
                 <span className="sr-only"></span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent>
-              <p className="">{link.name}</p>
-            </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </>
@@ -78,18 +82,31 @@ export default function NavLink() {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-muted/40  dark:bg-slate-900">
-        <aside className="hidden fixed inset-y-0 left-0 flex-col border-r bg-background sm:flex dark:bg-slate-900">
-          <nav className="flex flex-col items-start ml-2 gap-5 px-2 md:py-5">
+      <div className="flex w-full flex-col bg-muted/40 bg-white bg-opacity-70 dark:bg-slate-900 dark:bg-opacity-80">
+        <aside className="hidden fixed inset-y-0 left-0 flex-col border-r bg-background sm:flex drop-shadow-md bg-white bg-opacity-90 dark:bg-slate-900">
+          <nav className="flex flex-col items-start ml-4 gap-5 px-2 md:py-5">
             <Link href="#">
-              <Image src={ImageSorce} width={180} height={180} alt="Logo" />
+              <Image
+                src={ImageSorce}
+                width={180}
+                height={180}
+                alt="Logo"
+                className="block dark:hidden"
+              />
+              <Image
+                src={ImageSorceDark}
+                width={180}
+                height={180}
+                alt="Logo"
+                className="hidden dark:block"
+              />
             </Link>
             <>{linksGroupsDesktop}</>
           </nav>
         </aside>
 
         {/* moble nav */}
-        <div className="fixed top-0 flex flex-row items-start justify-start md:hidden">
+        <div className="fixed top-0 flex flex-row items-center mt-1 justify-start md:hidden">
           <header className="z-30 flex h-14 items-center gap-4 md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -99,8 +116,11 @@ export default function NavLink() {
                 </Button>
               </SheetTrigger>
 
-              <SheetContent side="left" className="sm:max-w-xs">
-                <nav className="grid gap-6 text-lg font-medium">
+              <SheetContent
+                side="left"
+                className="sm:max-w-xs  bg-white bg-opacity-95 dark:bg-slate-950 "
+              >
+                <nav className="grid gap-6 text-lg font-medium ">
                   {linksGroupsMobile}
                 </nav>
               </SheetContent>

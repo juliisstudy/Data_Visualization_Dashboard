@@ -26,7 +26,7 @@ export default function EditSubcriptionForm({
     <form action={dispatch}>
       <Title title="Edit Subscriptions" />
 
-      <div className="rounded-xs bg-gray-50 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 ">
+      <div className="rounded-xs bg-white bg-opacity-70 text-slate-500 p-3 w-full md:p-6 md:w-1/2 mt-3 dark:bg-slate-900">
         <div className="mb-4">
           <label htmlFor="player" className="mb-2 block text-lg font-medium">
             Choose a Player
@@ -92,7 +92,7 @@ export default function EditSubcriptionForm({
               <legend className="mb-2 block text-lg font-medium mt-7">
                 Set the status
               </legend>
-              <div className="rounded-md border border-gray-50 mt-5">
+              <div className="rounded-md border border-gray-50 mt-5 dark:border-none">
                 <div className="flex gap-4">
                   <div className="flex items-center">
                     <input
@@ -149,7 +149,7 @@ export default function EditSubcriptionForm({
               href="/dashboard/subscribers/"
               className="flex h-10 items-center rounded-sm "
             >
-              <ButtonUI className="bg-white border border-slate-200 text-slate-600-">
+              <ButtonUI className="bg-white border border-slate-200 text-slate-600 hover:text-white dark:bg-gray-400 dark:border-none">
                 Cancel
               </ButtonUI>
             </Link>
