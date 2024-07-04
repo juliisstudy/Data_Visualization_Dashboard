@@ -30,7 +30,7 @@ export default async function SubscribersTable({
                         width={28}
                         height={28}
                         alt={`${subscriber.name}'s profile picture`}
-                        priority
+                        unoptimized
                       />
                       <div>
                         <p>{subscriber.name}</p>
