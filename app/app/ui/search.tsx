@@ -28,6 +28,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       <Input
         className="p-4 py-6"
         placeholder={placeholder}
+        data-lpignore="true"
         onChange={(e) => {
           handleSearch(e.target.value);
         }}

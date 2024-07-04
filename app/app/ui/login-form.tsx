@@ -21,6 +21,7 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                data-lpignore="true"
                 placeholder="Enter your email address"
                 required
               />
@@ -36,6 +37,7 @@ export default function LoginForm() {
                   type="password"
                   name="password"
                   placeholder="Enter password"
+                  data-lpignore="true"
                   required
                   minLength={6}
                 />
