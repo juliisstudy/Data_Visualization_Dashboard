@@ -75,6 +75,7 @@ export default function EditSubcriptionForm({
                   defaultValue={subscriptions.amount}
                   step="0.01"
                   placeholder="Enter amount"
+                  data-lpignore="true"
                   className="peer block w-full rounded-sm p-3 border"
                   aria-describedby="amount-error"
                 />
@@ -100,6 +101,7 @@ export default function EditSubcriptionForm({
                       name="status"
                       type="radio"
                       value="active"
+                      data-lpignore="true"
                       defaultChecked={subscriptions.status === "active"}
                       className="h-4 w-4"
                     />
@@ -116,6 +118,7 @@ export default function EditSubcriptionForm({
                       name="status"
                       type="radio"
                       value="cancelled"
+                      data-lpignore="true"
                       defaultChecked={subscriptions.status === "active"}
                       className="h-4 w-4"
                     />

@@ -63,6 +63,7 @@ export default function CreateSubscribeForm({
                 name="amount"
                 type="number"
                 step="0.01"
+                data-lpignore="true"
                 placeholder="Enter USD amount"
                 className="peer block w-full rounded-sm p-3 border"
                 aria-describedby="amount-error"
@@ -91,6 +92,7 @@ export default function CreateSubscribeForm({
                     name="status"
                     type="radio"
                     value="active"
+                    data-lpignore="true"
                     className="text-white-600 h-4 w-4 cursor-pointer border-gray-300 focus:ring-2"
                   />
                   <label
@@ -107,6 +109,7 @@ export default function CreateSubscribeForm({
                     name="status"
                     type="radio"
                     value="cancelled"
+                    data-lpignore="true"
                     className="text-white-600 h-4 w-4 cursor-pointer border-gray-300 focus:ring-2"
                   />
                   <label
