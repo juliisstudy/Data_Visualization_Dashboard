@@ -24,7 +24,7 @@ export default function Sidenav() {
             }}
           >
             <Button className="font-medium  ">
-              <div>Sign out</div>
+              <span>Sign out</span>
             </Button>
           </form>
         </div>

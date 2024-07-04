@@ -11,6 +11,7 @@ export default function page() {
         height={180}
         alt="Logo"
         className="block dark:hidden mx-auto"
+        priority={false}
       />
       <LoginForm />
     </div>

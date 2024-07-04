@@ -15,9 +15,9 @@ export default async function PlayersTable({
           <div className="inline-block min-w-full align-middle">
             <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0 dark:bg-slate-900 dark:text-gray-50">
               <div className="md:hidden">
-                {players?.map((player) => (
+                {players?.map((player, index) => (
                   <div
-                    key={player.id}
+                    key={index}
                     className="mb-2 w-full bg-white p-4 text-slate-700 dark:bg-slate-900 border-b border-slate-500 md:border-none rounded-md dark:text-slate-400"
                   >
                     <div className="flex items-center justify-between border-b pb-4">
@@ -46,7 +46,9 @@ export default async function PlayersTable({
                       </div>
                       <div className="flex w-1/2 flex-col">
                         <p className="text-xs">Paid</p>
-                        <p className="font-medium">{player.total_paid}</p>
+                        <p key={player.id} className="font-medium">
+                          {player.total_paid}
+                        </p>
                       </div>
                     </div>
                     <div className="pt-4 text-sm">
@@ -77,22 +79,20 @@ export default async function PlayersTable({
                 </thead>
 
                 <tbody className="divide-y divide-gray-200 text-gray-900 p-4">
-                  {players.map((player) => (
+                  {players.map((player, index) => (
                     <tr
-                      key={player.id}
+                      key={index}
                       className="dark:bg-slate-900 p-4 w-full border-b text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-xs dark:text-slate-50"
                     >
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
-                        <div className="flex items-center gap-3">
-                          <Image
-                            src={player.image_url}
-                            className="rounded-sm"
-                            alt={`${player.name}'s profile picture`}
-                            width={28}
-                            height={28}
-                          />
-                          <p>{player.name}</p>
-                        </div>
+                        <Image
+                          src={player.image_url}
+                          className="rounded-sm flex items-center gap-3 "
+                          alt={`${player.name}'s profile picture`}
+                          width={28}
+                          height={28}
+                        />
+                        <p>{player.name}</p>
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm  dark:bg-slate-900 dark:text-white dark:border-b border-slate-500">
                         {player.email}

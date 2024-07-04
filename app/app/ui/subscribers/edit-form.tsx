@@ -42,8 +42,8 @@ export default function EditSubcriptionForm({
               <option value="" disabled className="bg-white-50">
                 Select a player
               </option>
-              {players.map((player) => (
-                <option key={player.id} value={player.id}>
+              {players.map((player, index) => (
+                <option key={index} value={player.id}>
                   {player.name}
                 </option>
               ))}

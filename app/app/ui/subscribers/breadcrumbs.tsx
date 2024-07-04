@@ -6,7 +6,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-
+import Link from "next/link";
 type Breadcrumb = {
   label: string;
   href: string;
@@ -19,17 +19,30 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <Breadcrumb className="pl-0  sm:mt-2 sm:px-6 py-4">
-      <BreadcrumbList>
+    <div className="pl-0  sm:mt-2 sm:px-6 py-4">
+      <div>
         {breadcrumbs.map((breadcrumb, index) => (
-          <BreadcrumbItem key={breadcrumb.href}>
-            <BreadcrumbLink href={breadcrumb.href}>
-              {breadcrumb.label}
-            </BreadcrumbLink>
+          <div key={index}>
+            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
             {index < breadcrumbs.length - 1 ? <BreadcrumbSeparator /> : null}
-          </BreadcrumbItem>
+          </div>
         ))}
-      </BreadcrumbList>
-    </Breadcrumb>
+      </div>
+    </div>
   );
+}
+
+{
+  /* <Breadcrumb className="pl-0  sm:mt-2 sm:px-6 py-4">
+  <BreadcrumbList>
+    {breadcrumbs.map((breadcrumb, index) => (
+      <BreadcrumbItem key={index}>
+        <BreadcrumbLink href={breadcrumb.href}>
+          {breadcrumb.label}
+        </BreadcrumbLink>
+        {index < breadcrumbs.length - 1 ? <BreadcrumbSeparator /> : null}
+      </BreadcrumbItem>
+    ))}
+  </BreadcrumbList>
+</Breadcrumb>; */
 }

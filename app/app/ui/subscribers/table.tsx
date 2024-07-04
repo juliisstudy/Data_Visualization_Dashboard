@@ -16,9 +16,9 @@ export default async function SubscribersTable({
       <div className="inline-block min-w-full align-middle ">
         <div className="rounded-lg bg-gray-50 p-2 dark:bg-slate-900 md:pt-0">
           <div className="md:hidden">
-            {subscribers?.map((subscriber) => (
+            {subscribers?.map((subscriber, index) => (
               <div
-                key={subscriber.id}
+                key={index}
                 className="mb-2 w-full rounded-sm bg-white p-3 dark:bg-slate-900"
               >
                 <div className="flex items-center justify-between">
@@ -75,9 +75,9 @@ export default async function SubscribersTable({
                 </tr>
               </thead>
               <tbody className="bg-white dark:bg-slate-900">
-                {subscribers.map((subscriber) => (
+                {subscribers.map((subscriber, index) => (
                   <tr
-                    key={subscriber.id}
+                    key={index}
                     className="dark:bg-slate-900 p-4 w-full border-b text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-xs dark:text-slate-50"
                   >
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">

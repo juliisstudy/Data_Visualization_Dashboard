@@ -29,12 +29,12 @@ const links = [
 export default function NavLink() {
   const pathname = usePathname();
 
-  const linksGroupsMobile = links.map((link) => {
+  const linksGroupsMobile = links.map((link, index) => {
     const LinkIcon = link.icon;
 
     return (
       <Link
-        key={link.href}
+        key={index}
         href={link.href}
         className={clsx(
           "flex h-[50px] grow items-center font-medium hover:text-blue-500 ",
@@ -45,30 +45,24 @@ export default function NavLink() {
       >
         <LinkIcon className=" w-6 h-6" />
 
-        <p key={link.href} className="ml-4 hover:text-blue-500">
-          {link.name}
-        </p>
+        <p className="ml-4 hover:text-blue-500">{link.name}</p>
       </Link>
     );
   });
 
-  const linksGroupsDesktop = links.map((link) => {
+  const linksGroupsDesktop = links.map((link, index) => {
     const LinkIcon = link.icon;
     return (
       <>
-        <TooltipProvider key={link.href}>
-          <Tooltip key={link.href}>
+        <TooltipProvider key={index}>
+          <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                key={link.href}
                 href={link.href}
                 className="flex items-center justify-start py-2"
               >
-                <LinkIcon key={link.href} className="w-6 h-6" />
-                <p
-                  key={link.href}
-                  className="ml-6 font-medium hover:text-sky-800"
-                >
+                <LinkIcon className="w-6 h-6" />
+                <p className="ml-6 font-medium hover:text-sky-800">
                   {link.name}
                 </p>
                 <span className="sr-only"></span>
@@ -92,6 +86,7 @@ export default function NavLink() {
                 height={180}
                 alt="Logo"
                 className="block dark:hidden"
+                priority={false}
               />
               <Image
                 src={ImageSorceDark}
@@ -99,6 +94,7 @@ export default function NavLink() {
                 height={180}
                 alt="Logo"
                 className="hidden dark:block"
+                priority={false}
               />
             </Link>
             <>{linksGroupsDesktop}</>
