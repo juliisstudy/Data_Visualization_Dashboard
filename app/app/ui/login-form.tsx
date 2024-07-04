@@ -23,6 +23,7 @@ export default function LoginForm() {
                 name="email"
                 data-lpignore="true"
                 placeholder="Enter your email address"
+                value="user@mail.com"
                 required
               />
             </div>
@@ -37,6 +38,7 @@ export default function LoginForm() {
                   type="password"
                   name="password"
                   placeholder="Enter password"
+                  value="123456"
                   data-lpignore="true"
                   required
                   minLength={6}

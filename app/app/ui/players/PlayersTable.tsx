@@ -30,6 +30,7 @@ export default async function PlayersTable({
                               alt={`${player.name}'s profile picture`}
                               width={30}
                               height={30}
+                              priority
                             />
                             <div>
                               <p className="">{player.name}</p>
