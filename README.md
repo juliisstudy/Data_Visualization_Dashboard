@@ -1,6 +1,6 @@
 # Data Visualization Dashboard
 
-![](screen_video.mp4)
+
 
 ## Project Overview
 The Logic Game dashboard is a responsive data visualization dashboard designed to present players' data from the database using interactive charts. It helps users understand player behaviors and manage subscriptions through forms.
