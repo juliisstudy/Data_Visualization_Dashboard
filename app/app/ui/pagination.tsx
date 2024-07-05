@@ -48,6 +48,7 @@ export default function Pagination({ totalPage }: { totalPage: number }) {
       <PaginationArrow
         direction="right"
         href={createPageURL(currentPage + 1)}
+        isDisabled={currentPage + 1 >= totalPage}
       />
     </div>
   );

@@ -100,7 +100,9 @@ export default async function SubscribersTable({
                     <td className="whitespace-nowrap px-3 py-3">
                       {formatCurrency(subscriber.amount)}
                     </td>
-                    <td className="whitespace-nowrap px-3 py-3"></td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      {subscriber.date}
+                    </td>
                     <td className="whitespace-nowrap px-3 py-3">
                       <SubscriberStatus status={subscriber.status} />
                     </td>

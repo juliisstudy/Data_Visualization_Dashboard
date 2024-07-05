@@ -1,13 +1,14 @@
 //fetch data from db
 import {sql} from '@vercel/postgres'
 import { PlayerField, PlayerTable,SubscriberTable,SubscriptionsForm,Revenue,NumberOfPlayers,NumberOfSubscribers} from './definition';
-import {formatCurrency} from './utils';
+import {formatCurrency,formatDateToLocal} from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 
-export async function fetchFilteredPlayers(query:string){
+export async function fetchFilteredPlayers(query:string,currentPage:number){
 
     noStore();
+    const offset = (currentPage-1)*ITEMS_PER_PAGE;
     try{
 
       const data = await sql<PlayerTable>`
@@ -26,7 +27,8 @@ export async function fetchFilteredPlayers(query:string){
 		  players.name ILIKE ${`%${query}%`} OR
         players.email ILIKE ${`%${query}%`}
 		GROUP BY players.id, players.name, players.email, players.image_url
-		ORDER BY players.name ASC   
+		ORDER BY players.name ASC 
+    LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
       `;
 
       const players = data.rows.map((player)=>({
@@ -65,15 +67,32 @@ export async function fetchSubscribersPages(query:string){
     console.error('Database Error',error)
     throw new Error('Failed to fetch total number of subscribers')
   }
-
 }
+
+export async function fetchPlayersPages(query:string){
+  
+  noStore();
+  try{
+
+    const count = await sql `SELECT COUNT(*)
+    FROM players`
+    
+    const totalPages = Math.ceil(Number(count.rows[0].count)/ITEMS_PER_PAGE)
+    
+    return totalPages; 
+  }catch(error){
+    console.error('Database Error',error)
+    throw new Error('Failed to fetch total number of players')
+  }
+}
+
 
 export async function fetchFilteredSubscribers(query:string,currentPage:number){
   noStore()
   const offset = (currentPage -1)*ITEMS_PER_PAGE;
 
   try{
-    const subscribers = await sql<SubscriberTable>`
+    const data = await sql<SubscriberTable>`
    SELECT subscribers.id,subscribers.user_id,players.name,players.email,players.image_url,
     subscribers.date,subscribers.amount,subscribers.status 
     FROM subscribers JOIN players ON subscribers.user_id=players.id
@@ -86,7 +105,11 @@ export async function fetchFilteredSubscribers(query:string,currentPage:number){
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `
 
-    return subscribers.rows;
+     const subscriptions = data.rows.map((subscription)=>({
+      ...subscription,
+      date:formatDateToLocal(subscription.date)
+     }))
+      return subscriptions;
 
   }catch(err){
     console.error('Database Error',err)

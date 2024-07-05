@@ -29,19 +29,19 @@ const players = [
   {
     id: "10cabd1e-e97e-44e9-b692-3ac7e9e4bb5c",
     name: "Zoe Hunter",
-    email: "Zoe@Hunter",
+    email: "Zoe@Hunter.com",
     image_url: "/users/Zoe-Hunter.jpg",
   },
   {
     id: "a3594bc1-289e-46a7-8367-61c28025f371",
     name: "Zoey Campbell",
-    email: "zoey@campbell",
+    email: "zoey@campbell.com",
     image_url: "/users/Zoey-Campbell.jpg",
   },
   {
     id: "a381907d-a56c-4a3a-b7e4-148784acb9bc",
     name: "Miriam Johnson",
-    email: "miriam@johnson",
+    email: "miriam@johnson.com",
     image_url: "/users/Miriam-Johnson.jpg",
   },
   {
@@ -56,36 +56,78 @@ const players = [
     email: "felecia@howard.com",
     image_url: "/users/Felecia-Howard.jpg",
   },
+  {
+    id: "e4d8c753-1bd7-4e1c-9c69-3752b799144f",
+    name: "Zoey Campbell",
+    email: "zoey@campbell",
+    image_url: "/users/Zoey-Campbell.jpg",
+  },
+  {
+    id: "db10e408-c6da-449c-a92a-0c7ec62ed1d7",
+    name: "Lillian Clark",
+    email: "lillian@clark.com",
+    image_url: "/users/LillianClark.jpg",
+  },
+  {
+    id: "c33c235e-f208-47df-8cff-ab62780b538a",
+    name: "Jonathan Lambert",
+    email: "jonathan@lambert.com",
+    image_url: "/users/JonathanLambert.jpg",
+  },
+  {
+    id: "26f7c1f2-f06a-4707-be01-905c9a801672",
+    name: "Eduardo Fleming",
+    email: "eduardo@fleming.com",
+    image_url: "/users/EduardoFleming.jpg",
+  },
+  {
+    id: "ec522414-bd7d-4a82-9445-f0cfaccb9f80",
+    name: "Julia Nguyen",
+    email: "julia@nguyen.com",
+    image_url: "/users/JuliaNguyen.jpg",
+  },
+  {
+    id: "62bd6c5a-aaa8-41f1-8e12-77acc9d637a5",
+    name: "Penny Curtis",
+    email: "penny@curtis",
+    image_url: "/users/PennyCurtis.jpg",
+  },
+  {
+    id: "cdfb3deb-c663-4e57-9c9a-a88389d7ba57",
+    name: "Yolanda Mckinney",
+    email: "yolanda@mckinney",
+    image_url: "/users/YolandaMckinney.jpg",
+  },
 ];
 
 const subscribers = [
   {
     user_id: players[0].id,
-    amount: 15,
+    amount: 150,
     status: "active",
     date: "2024-05-01",
   },
   {
     user_id: players[0].id,
-    amount: 15,
+    amount: 150,
     status: "active",
     date: "2024-06-01",
   },
   {
     user_id: players[1].id,
-    amount: 30,
+    amount: 300,
     status: "active",
     date: "2024-05-01",
   },
   {
     user_id: players[3].id,
-    amount: 15,
+    amount: 150,
     status: "active",
     date: "2024-07-01",
   },
   {
     user_id: players[2].id,
-    amount: 15,
+    amount: 150,
     status: "active",
     date: "2024-10-01",
   },
