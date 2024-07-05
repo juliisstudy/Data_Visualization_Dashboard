@@ -149,7 +149,7 @@ export default function EditSubcriptionForm({
 
           <div className="mt-6 flex justify-end gap-4">
             <Link
-              href="/dashboard/subscribers/"
+              href="/dashboard/subscribers"
               className="flex h-10 items-center rounded-sm "
             >
               <ButtonUI className="bg-white border border-slate-200 text-slate-600 hover:text-white dark:bg-gray-400 dark:border-none">

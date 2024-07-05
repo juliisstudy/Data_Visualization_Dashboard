@@ -65,7 +65,7 @@ function PaginationNumber({
   isActive: boolean;
 }) {
   const className = clsx(
-    "flex h-10 w-10 items-center justify-center text-sm border hover:bg-sky-700",
+    "flex h-10 w-10 items-center justify-center text-sm border hover:bg-cyan-700",
     {
       "rounded-l-md": position === "first" || position === "single",
       "rounded-r-md": position === "last" || position === "single",

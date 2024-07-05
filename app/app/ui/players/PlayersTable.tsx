@@ -25,7 +25,7 @@ export default async function PlayersTable({
                         <div className="mb-2 flex items-center">
                           <div className="flex items-center gap-3">
                             <Image
-                              src="@/public/users/Zoe-Hunter.jpg"
+                              src={player.image_url}
                               className="rounded-sm"
                               alt={`${player.name}'s profile picture`}
                               width={30}
